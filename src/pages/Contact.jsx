@@ -7,14 +7,25 @@ function Contact() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(false)
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    setSubmitted(true)
+    setError(false)
+    const response = await fetch('https://formspree.io/f/xlgadard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+    if (response.ok) {
+      setSubmitted(true)
+    } else {
+      setError(true)
+    }
   }
 
   return (
@@ -77,6 +88,11 @@ function Contact() {
                 style={styles.textarea}
               />
             </div>
+            {error && (
+              <p style={styles.errorText}>
+                Something went wrong. Please try again.
+              </p>
+            )}
             <button type="submit" style={styles.button}>
               Send message
             </button>
@@ -186,6 +202,10 @@ const styles = {
   successText: {
     fontSize: '1rem',
     color: 'var(--color-text-dark)',
+  },
+  errorText: {
+    fontSize: '0.9rem',
+    color: '#c0392b',
   },
 }
 
