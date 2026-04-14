@@ -101,7 +101,7 @@ const styles = {
   leftCol: {
     position: 'sticky',
     top: '5rem',
-    padding: '5rem 4rem 5rem 2rem',
+    padding: '5rem 4rem 5rem 4rem',
     display: 'flex',
     flexDirection: 'column',
     gap: '1.2rem',
