@@ -11,7 +11,7 @@ function getPosts() {
     const slug = filepath.replace('../posts/', '').replace('.md', '')
     const { attributes } = frontMatter(content)
 return { slug, ...attributes }
-  }).sort((a, b) => new Date(b.date) - new Date(a.date))
+  }).sort((a, b) => new Date(`${b.date}T00:00:00`) - new Date(`${a.date}T00:00:00`))
 }
 
 function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, number }) {
@@ -36,7 +36,7 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, numb
           <span style={styles.postNumber}>{String(number).padStart(2, '0')}</span>
           {date && (
             <span style={styles.postDate}>
-              {new Date(date).toLocaleDateString('en-GB', {
+              {new Date(`${date}T00:00:00`).toLocaleDateString('en-GB', {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',

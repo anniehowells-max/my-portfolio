@@ -43,7 +43,7 @@ function BlogPost() {
         </div>
         <h1 style={styles.title}>{post.title}</h1>
         <p style={styles.date}>
-          {new Date(post.date).toLocaleDateString('en-GB', {
+          {new Date(`${post.date}T00:00:00`).toLocaleDateString('en-GB', {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
