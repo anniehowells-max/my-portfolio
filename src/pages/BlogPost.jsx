@@ -65,7 +65,7 @@ function BlogPost() {
           <p style={styles.ctaText}>
             {post.ctaText || "I design UX-led websites for small businesses and growing brands that need clarity, structure and long-term performance. If you have a project in mind, I'd love to hear from you."}
           </p>
-          <p style={styles.ctaHeading}>Get in touch to discuss your project.</p>
+          <p style={styles.ctaHeading}>{post.ctaHeading || 'Get in touch to discuss your project.'}</p>
           <a href="/enquire" style={styles.ctaButton}>Enquire</a>
         </div>
 
