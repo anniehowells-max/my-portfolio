@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import './index.css'
 import App from './App'
 import Blog from './pages/Blog'
@@ -11,6 +13,9 @@ import Layout from './components/Layout'
 import ContactPage from './pages/Contact'
 import ServicesPage from './pages/Services'
 import AboutPage from './pages/About'
+
+inject()
+injectSpeedInsights()
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
