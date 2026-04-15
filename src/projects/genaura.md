@@ -26,7 +26,7 @@ Packaging and digital design were approached with the same philosophy. The packa
 ::
 
 ::video-full
-/images/projects/genaura/genauravideo.mov
+https://vimeo.com/1183421765
 ::
 
 ::image-grid

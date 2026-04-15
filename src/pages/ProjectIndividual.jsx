@@ -72,6 +72,20 @@ function ImageFull({ image, position }) {
 }
 
 function VideoFull({ video }) {
+  const isVimeo = video.includes('vimeo.com')
+  if (isVimeo) {
+    const id = video.match(/vimeo\.com\/(\d+)/)?.[1]
+    return (
+      <div style={styles.videoFull}>
+        <iframe
+          src={`https://player.vimeo.com/video/${id}?autoplay=1&loop=1&muted=1&background=1`}
+          style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    )
+  }
   return (
     <video
       src={video}
@@ -302,6 +316,7 @@ const styles = {
   },
   videoFull: {
     width: '100%',
+    aspectRatio: '16 / 9',
     display: 'block',
   },
   imageGridItem: {
