@@ -22,24 +22,18 @@ const services = [
   },
   {
     number: "04",
-    title: "Logo Only Design",
-    description:
-      "A focused logo design service for brands that don't need a full identity. Thoughtfully designed, versatile logos that work across platforms and scales.",
-  },
-  {
-    number: "05",
     title: "UX/UI Services",
     description:
       "User-centred design focused on usability, clarity, and flow. From UX audits and wireframes to interface design for websites and digital products.",
   },
   {
-    number: "06",
+    number: "05",
     title: "Graphic Design",
     description:
       "Design support for both digital and print — from marketing assets to presentations and editorial layouts. Clean, considered design that aligns with your brand.",
   },
   {
-    number: "07",
+    number: "06",
     title: "Social Media Post Design",
     description:
       "Custom-designed social media posts and templates that feel cohesive, on-brand, and easy to reuse — helping you show up consistently online.",
