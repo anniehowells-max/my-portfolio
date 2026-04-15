@@ -8,7 +8,7 @@ function Contact() {
           I'm currently open to new projects. Whether you have a project
           in mind, a question, or just want to say hi — I'd love to hear from you.
         </p>
-        <a href="/contact" style={styles.button}>Get in touch</a>
+        <a href="/enquire" style={styles.button}>Get in touch</a>
       </div>
     </section>
   )
