@@ -318,6 +318,7 @@ const styles = {
     width: '100%',
     aspectRatio: '16 / 9',
     display: 'block',
+    lineHeight: 0,
   },
   imageGridItem: {
     aspectRatio: '1 / 1',
