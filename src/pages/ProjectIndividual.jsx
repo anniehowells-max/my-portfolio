@@ -78,7 +78,7 @@ function VideoFull({ video }) {
     return (
       <iframe
         src={`https://player.vimeo.com/video/${id}?autoplay=1&loop=1&muted=1&background=1`}
-        style={{ width: '100%', aspectRatio: '16 / 9', border: 'none', display: 'block' }}
+        style={{ width: '100%', aspectRatio: '3582 / 1864', border: 'none', display: 'block' }}
         allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
       />
