@@ -6,7 +6,7 @@ url: "https://desdeck.com"
 coverImage: "/images/projects/desdeck/desdeck-cover.png"
 cardImage: "/images/projects/desdeck/desdeck-cover.png"
 year: "2023"
-order: 3
+order: 4
 ---
 
 ::text-two-col

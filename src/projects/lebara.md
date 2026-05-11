@@ -6,7 +6,7 @@ url: "https://www.instagram.com/lebara.mobile/"
 coverImage: "/images/projects/lebara/lebara-cover.png"
 cardImage: "/images/projects/lebara/lebara-card.png"
 year: "2025"
-order: 6
+order: 7
 ---
 
 ::text-two-col

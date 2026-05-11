@@ -6,7 +6,7 @@ url: "https://genaura.com"
 coverImage: "/images/projects/genaura/genaura-cover.jpeg"
 cardImage: "/images/projects/genaura/genaura-cover.jpeg"
 year: "2024"
-order: 1
+order: 2
 ---
 
 ::text-two-col

@@ -6,7 +6,7 @@ url: "https://freddypaske.com"
 coverImage: "/images/projects/freddy-paske/freddy-paske-cover.jpeg"
 cardImage: "/images/projects/freddy-paske/freddy-paske-1.png"
 year: "2023"
-order: 7
+order: 8
 ---
 
 ::text-two-col

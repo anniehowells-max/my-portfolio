@@ -6,7 +6,7 @@ url: "https://hellowolfie.com"
 coverImage: "/images/projects/wolfie/wolfie-cover.png bottom"
 cardImage: "/images/projects/wolfie/wolfie-2.png"
 year: "2024"
-order: 1
+order: 5
 ---
 
 ::text-two-col

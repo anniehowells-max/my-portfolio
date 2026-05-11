@@ -6,7 +6,7 @@ url: "https://boutique.oetkerhotels.com"
 coverImage: "/images/projects/oetker-collection/oetker-collection-cover.png"
 cardImage: "/images/projects/oetker-collection/oetker-collection-cover.png"
 year: "2024"
-order: 2
+order: 3
 ---
 
 ::text-two-col
