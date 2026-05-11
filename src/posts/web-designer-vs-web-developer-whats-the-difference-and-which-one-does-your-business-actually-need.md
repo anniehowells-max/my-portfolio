@@ -1,10 +1,10 @@
 ---
-title: "How to Know If Your Brand Identity Needs an Update"
+title: "Web Designer vs Web Developer: What's the Difference, and Which One Does Your Business Actually Need?"
 date: "2026-05-11"
 tags: ["Small Business"]
-excerpt: "Your brand identity is more than a logo. Many small businesses outgrow their branding quietly. Here are the clearest signs it may need updating."
+excerpt: "It's less useful to ask 'designer or developer?' and more useful to ask: what problem am I actually trying to solve?"
 coverImage: "/images/blog/designer-or-developer.jpg"
-ctaText: "If your branding no longer reflects the quality or direction of your business, I design thoughtful brand identities that align strategy with visual clarity. Get in touch to explore a brand refresh."
+ctaText: "Book a free consultiation to discuss how we can solve your problem."
 ---
 
 If you're looking to build or improve your online presence and you've started searching for help, you've probably run into both terms: web designer and web developer. They're often used interchangeably, but they're not the same thing — and hiring the wrong one for what you actually need can cost you time and money.
