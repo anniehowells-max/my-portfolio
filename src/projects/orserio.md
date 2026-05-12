@@ -31,6 +31,7 @@ I designed and built the full Shopify website from scratch, developing custom se
 /images/projects/orserio/orserio-10.png
 ::
 
-::image-grod
+::image-grid
 /images/projects/orserio/orserio-12.webp
 /images/projects/orserio/orserio-9.png
+::
