@@ -3,7 +3,7 @@ title: "Orserio"
 about: "Website and UX design for a menswear business with an aim to create clothes with a personalised fit."
 role: ["UX Design", "Web Design"]
 url: "https://orserio.com"
-coverImage: "/images/projects/orserio/orserio-1.jpeg"
+coverImage: "/images/projects/orserio/orserio-1.png"
 cardImage: "/images/projects/orserio/orserio-1.png"
 year: "2026"
 order: 1
