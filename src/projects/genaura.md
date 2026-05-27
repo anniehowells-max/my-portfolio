@@ -1,7 +1,7 @@
 ---
 title: "Genaura"
 about: "Genaura is a premium skincare brand built around the science of skin longevity. The brief was to create a brand identity and website that felt luxurious, trustworthy and rooted in nature."
-role: ["UX Design", "Branding", "Web Design", "Packaging Design"]
+role: ["0-1", "UX Design", "Branding", "Web Design", "Packaging Design"]
 url: "https://genaura.com"
 coverImage: "/images/projects/genaura/genaura-cover.jpeg"
 cardImage: "/images/projects/genaura/genaura-cover.jpeg"

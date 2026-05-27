@@ -1,7 +1,7 @@
 ---
 title: "Wolfie"
 about: "Website design for raw dog food producer Wolfie."
-role: ["UX/UI Design", "Web Design"]
+role: ["0-1", "UX/UI Design", "Web Design"]
 url: "https://hellowolfie.com"
 coverImage: "/images/projects/wolfie/wolfie-cover.png bottom"
 cardImage: "/images/projects/wolfie/wolfie-2.png"
