@@ -37,9 +37,9 @@ Product pages were designed in an editorial style, connecting each item back to 
 The client was very happy with the final result. Performance data has not yet been gathered, but this is something to follow up on given the strength of the brand.
 ::
 
-::video-full
-/images/projects/oetker-collection/oetker-collection-video.mov
-::
+<!--::video-full-->
+<!--/images/projects/oetker-collection/oetker-collection-video.mov-->
+<!--::-->
 
 ::image-grid
 /images/projects/oetker-collection/oetker-collection-1.png
