@@ -25,6 +25,18 @@ I approached the redesign with a UX-first methodology, beginning with a structur
 The visual direction drew on publishing and luxury references — a subtle colour palette, carefully chosen typography, and balanced layouts that give the content space to breathe. Editorial storytelling is woven throughout, with content hierarchies that reward both quick scanning and deeper reading. The result positions Ultimate Library as an expert brand whose digital experience matches the bespoke, considered nature of its service.
 ::
 
+::text-two-col
+## Scope
+
+9 pages designed end-to-end — from discovery and competitive research through wireframing, prototyping, and high-fidelity design. Deliverables included a refreshed visual identity, full brand guidelines, and a handoff-ready prototype.
+
+||
+
+## Outcome
+
+The client reported that the redesigned experience resonated significantly more with their target audience — a better articulated brand and clearer user journeys that they attributed to bringing in more clients.
+::
+
 ::image-grid
 /images/projects/ultimate-library/ultimate-library-1.png
 /images/projects/ultimate-library/ultimate-library-2.jpg
