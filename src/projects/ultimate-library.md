@@ -34,7 +34,7 @@ The visual direction drew on publishing and luxury references — a subtle colou
 
 ## Outcome
 
-The client reported that the redesigned experience resonated significantly more with their target audience — a better articulated brand and clearer user journeys that they attributed to bringing in more clients.
+The client reported that the **redesigned experience resonated significantly** more with their target audience — a better articulated brand and clearer user journeys that they attributed to bringing in more clients.
 ::
 
 ::image-grid

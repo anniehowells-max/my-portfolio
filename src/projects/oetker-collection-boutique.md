@@ -25,6 +25,18 @@ I began with a strategic review of the product assortment and target audience, d
 Product pages were designed in an editorial style, connecting each item back to the hotel experiences and craftsmanship behind it. Considered typography and spatial composition reinforce the sense of curation throughout, positioning the boutique as a refined extension of the Oetker Collection rather than simply a retail destination.
 ::
 
+::text-two-col
+## Scope
+
+4 pages designed and built in Shopify, with a focus on optimising user journeys across the browsing and product discovery experience. This was a redesign of an existing site, bringing the digital retail experience in line with the brand's wider luxury positioning.
+
+||
+
+## Outcome
+
+The client was very happy with the final result. Performance data has not yet been gathered, but this is something to follow up on given the strength of the brand.
+::
+
 ::video-full
 /images/projects/oetker-collection/oetker-collection-video.mov
 ::

@@ -21,6 +21,18 @@ Orserio is a menswear brand with a clear and confident proposition: form-fitting
 I designed and built the full Shopify website from scratch, developing custom sections with the support of AI tooling to extend beyond the platform's standard capabilities. The visual direction was shaped to reflect the brand's sharp, confident aesthetic — imagery was edited to ensure a consistent and elevated look across the site. The result is a cohesive ecommerce experience that presents Orserio's offering clearly, gives the product room to speak for itself, and provides a strong foundation for the brand's online presence.
 ::
 
+::text-two-col
+## Scope
+
+8 pages designed and built end-to-end for a brand with no prior web presence, from research through UX design, high-fidelity design, Shopify development, and photography editing. Scope extended beyond the site itself to include ongoing graphic design and ad creative.
+
+||
+
+## Outcome
+
+The client responded very positively to the final designs. As an ongoing working relationship, performance data is still being gathered, with quantitative results to follow.
+::
+
 ::image-grid
 /images/projects/orserio/orserio-7.png
 /images/projects/orserio/orserio-12.webp
