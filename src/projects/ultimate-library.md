@@ -28,13 +28,13 @@ The visual direction drew on publishing and luxury references — a subtle colou
 ::text-two-col
 ## Scope
 
-9 pages designed end-to-end — from discovery and competitive research through wireframing, prototyping, and high-fidelity design. Deliverables included a refreshed visual identity, full brand guidelines, and a handoff-ready prototype.
+**9 pages designed end-to-end**, from discovery and competitive research through wireframing, prototyping, and high-fidelity design. Deliverables included a refreshed visual identity, full brand guidelines, and a handoff-ready prototype.
 
 ||
 
 ## Outcome
 
-The client reported that the **redesigned experience resonated significantly** more with their target audience — a better articulated brand and clearer user journeys that they attributed to bringing in more clients.
+The client reported that the **redesigned experience resonated significantly** more with their target audience — a better articulated brand and clearer user journeys that they attributed to **bringing in more clients**.
 ::
 
 ::image-grid

@@ -30,7 +30,7 @@ I designed and built the full Shopify website from scratch, developing custom se
 
 ## Outcome
 
-The client responded very positively to the final designs. As an ongoing working relationship, performance data is still being gathered, with quantitative results to follow.
+The client responded very positively to the final designs. As an ongoing working relationship, performance data is still being gathered, with **quantitative results to follow**.
 ::
 
 ::image-grid
