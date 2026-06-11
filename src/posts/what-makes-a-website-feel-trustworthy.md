@@ -4,7 +4,7 @@ date: "2026-06-11"
 tags: ["Web Design", "UX Design", "Small Business"]
 excerpt: "Trust isn't something you can design in at the last minute. It's built through every decision on the page — and users feel its absence immediately."
 coverImage: "/images/blog/trustworthy-website.jpg"
-ctaText: "If your website isn't instilling confidence in the people who visit it, the design might be working against you. Let's talk about building something that earns trust from the first click."
+ctaText: "Trust is the invisible layer beneath every design decision. Get it right, and visitors become enquiries. Get it wrong, and even strong traffic won't convert."
 ---
 
 Trust isn't something you can design in at the last minute.
@@ -49,6 +49,3 @@ A business that's hard to reach feels like a business with something to hide.
 
 Clear contact information, a named person, a real location — these are small things that significantly raise perceived trustworthiness. If users can't figure out who they'd be working with, they'll look elsewhere.
 
----
-
-Trust is the invisible layer beneath every design decision. Get it right, and visitors become enquiries. Get it wrong, and even strong traffic won't convert.
