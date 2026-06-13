@@ -96,6 +96,27 @@ function VideoFull({ video }) {
   )
 }
 
+function Stats({ content }) {
+  const stats = content.split('\n').map(l => l.trim()).filter(Boolean).map(line => {
+    const pipeIdx = line.indexOf('|')
+    if (pipeIdx === -1) return null
+    return { value: line.slice(0, pipeIdx).trim(), label: line.slice(pipeIdx + 1).trim() }
+  }).filter(Boolean)
+
+  return (
+    <div style={styles.statsWrapper}>
+      <div className="project-stats" style={styles.statsGrid}>
+        {stats.map((stat, i) => (
+          <div key={i} style={styles.statItem}>
+            <p style={styles.statValue}>{stat.value}</p>
+            <p style={styles.statLabel}>{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function ImageGrid({ images }) {
   return (
     <div className="project-image-grid">
@@ -138,33 +159,47 @@ function ProjectIndividual() {
         <div style={styles.hero} className="project-hero">
           <div style={styles.heroLeft}>
             <h1 style={styles.title}>{project.title}</h1>
-            <p style={styles.about}>{project.about}</p>
+            <p style={styles.about} dangerouslySetInnerHTML={{ __html: project.about }} />
           </div>
           <div style={styles.heroRight}>
             <div style={styles.metaBlock}>
-              <p style={styles.metaLabel}>Role</p>
+              <p style={styles.metaLabel}>Services</p>
               <div style={styles.tags}>
                 {project.role && project.role.map(tag => (
                   <span key={tag} style={styles.tag}>{tag}</span>
                 ))}
               </div>
             </div>
-            <div style={styles.metaBlock}>
-              <p style={styles.metaLabel}>Year</p>
-              <p style={styles.metaValue}>{project.year}</p>
-            </div>
-            {project.url && (
+            <div style={styles.metaGrid}>
+              {project.targetType && (
+                <div style={styles.metaBlock}>
+                  <p style={styles.metaLabel}>Target Type</p>
+                  <p style={styles.metaValue}>{project.targetType}</p>
+                </div>
+              )}
+              {project.sector && (
+                <div style={styles.metaBlock}>
+                  <p style={styles.metaLabel}>Sector</p>
+                  <p style={styles.metaValue}>{project.sector}</p>
+                </div>
+              )}
               <div style={styles.metaBlock}>
-                <p style={styles.metaLabel}>URL</p>
-                <a href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={styles.metaLink}
-                >
-                  {project.url.replace('https://', '')} →
-                </a>
+                <p style={styles.metaLabel}>Year</p>
+                <p style={styles.metaValue}>{project.year}</p>
               </div>
-            )}
+              {project.url && (
+                <div style={styles.metaBlock}>
+                  <p style={styles.metaLabel}>URL</p>
+                  <a href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={styles.metaLink}
+                  >
+                    {project.url.replace('https://', '')} →
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -184,6 +219,7 @@ function ProjectIndividual() {
           if (section.type === 'image-full') return <ImageFull key={i} image={section.image} position={section.position} />
           if (section.type === 'video-full') return <VideoFull key={i} video={section.video} />
           if (section.type === 'image-grid') return <ImageGrid key={i} images={section.images} />
+          if (section.type === 'stats') return <Stats key={i} content={section.content} />
           return null
         })}
       </div>
@@ -200,6 +236,11 @@ function ProjectIndividual() {
             grid-template-columns: 1fr !important;
             gap: 2rem !important;
             padding: 7rem 1.5rem 2.5rem !important;
+          }
+          .project-stats {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2.5rem 2rem !important;
+            padding: 2rem !important;
           }
         }
       `}</style>
@@ -252,6 +293,11 @@ const styles = {
     color: 'rgba(255,255,255,0.6)',
     fontFamily: 'Lora, serif',
   },
+  metaGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '1.25rem 1rem',
+  },
   metaBlock: {
     display: 'flex',
     flexDirection: 'column',
@@ -263,15 +309,18 @@ const styles = {
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
     color: 'var(--color-accent)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   metaValue: {
     fontSize: '0.95rem',
     color: 'rgba(255,255,255,0.7)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   metaLink: {
     fontSize: '0.95rem',
     color: 'var(--color-accent)',
     textDecoration: 'underline',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   tags: {
     display: 'flex',
@@ -286,6 +335,7 @@ const styles = {
     backgroundColor: 'rgba(255,255,255,0.1)',
     border: '1px solid rgba(255,255,255,0.2)',
     color: 'rgba(255,255,255,0.8)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   coverImage: {
     flex: 1,
@@ -336,6 +386,40 @@ const styles = {
     fontSize: '0.95rem',
     fontWeight: '500',
     color: 'var(--color-accent)',
+  },
+  statsWrapper: {
+    backgroundColor: 'var(--color-background)',
+    borderTop: '1px solid rgba(0,0,0,0.07)',
+    borderBottom: '1px solid rgba(0,0,0,0.07)',
+  },
+  statsGrid: {
+    maxWidth: '1100px',
+    margin: '0 auto',
+    padding: '4rem',
+    width: '100%',
+    boxSizing: 'border-box',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+    gap: '3rem 4rem',
+  },
+  statItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+  },
+  statValue: {
+    fontSize: 'clamp(2.75rem, 5.5vw, 4.5rem)',
+    fontWeight: '700',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    letterSpacing: '-0.03em',
+    lineHeight: '1',
+    color: 'var(--color-accent)',
+  },
+  statLabel: {
+    fontSize: '0.875rem',
+    color: 'rgba(0,0,0,0.45)',
+    lineHeight: '1.6',
+    maxWidth: '220px',
   },
   notFound: {
     padding: '6rem 4rem',

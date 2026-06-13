@@ -53,12 +53,20 @@ function ProjectCollection() {
             >
               {/* Full-bleed cover image */}
               {(project.cardImage || project.coverImage) && (
-                <div
-                  style={{
-                    ...styles.coverImage,
-                    backgroundImage: `url(${(project.cardImage || project.coverImage).split(' ')[0]})`,
-                  }}
-                />
+                <div style={{ position: 'relative' }}>
+                  <div
+                    style={{
+                      ...styles.coverImage,
+                      backgroundImage: `url(${(project.cardImage || project.coverImage).split(' ')[0]})`,
+                    }}
+                  />
+                  {project.slug === 'orserio' && (
+                    <div style={styles.awardBadge}>
+                      <span>★</span>
+                      <span>Ecommerce Design Award Winner</span>
+                    </div>
+                  )}
+                </div>
               )}
 
               {/* Text row */}
@@ -189,6 +197,8 @@ const styles = {
     textTransform: "uppercase",
     opacity: 0.4,
     margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: "400",
   },
   leftHeading: {
     fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
@@ -294,6 +304,24 @@ const styles = {
     opacity: 0.3,
     flexShrink: 0,
     paddingRight: "0.5rem",
+  },
+  awardBadge: {
+    position: 'absolute',
+    bottom: '0.85rem',
+    left: '0.85rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.4rem',
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    backdropFilter: 'blur(6px)',
+    color: 'var(--color-accent)',
+    fontSize: '0.68rem',
+    fontWeight: '600',
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+    padding: '0.35rem 0.75rem',
+    borderRadius: '100px',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
 }
 

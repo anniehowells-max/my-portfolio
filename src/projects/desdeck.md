@@ -2,6 +2,8 @@
 title: "DesDeck"
 about: "Creating a brand identity and website for the website building platform DesDeck."
 role: ["Brand Identity", "Web Design", "UX Design"]
+sector: "Technology / SaaS"
+targetType: "B2B / D2C"
 url: "https://desdeck.com"
 coverImage: "/images/projects/desdeck/desdeck-cover.png"
 cardImage: "/images/projects/desdeck/desdeck-cover.png"
@@ -23,6 +25,11 @@ The task was to develop a cohesive brand identity and website that would establi
 The rebrand centred on clarity, structure and functionality — translating the product's core strengths into a visual language. I developed a unified system of typography, colour and graphic elements designed to work together and create a distinctive, scalable brand presence.
 
 The colour palette pairs a striking robin egg blue with cornflower blue and oxford blue, grounding the identity in a confident, contemporary tech aesthetic. Instrument Sans and Serif provide a typographic contrast that balances precision with approachability. The new visual identity was applied consistently across the website, merchandise, digital assets and brand collateral — establishing DesDeck as a cutting-edge platform with a strong foundation for growth.
+::
+
+::stats
+0→1 | Brand identity & website built from scratch
+4 | Brand touchpoints (website, merch, digital assets & collateral)
 ::
 
 ::image-grid

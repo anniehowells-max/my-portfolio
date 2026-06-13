@@ -2,6 +2,8 @@
 title: "Freddy Paske"
 about: "Website design for a contemporary painter and Platinum Jubilee Artist in Residence, balancing artistic expression with clarity and usability."
 role: ["UX Design", "Web Design"]
+sector: "Art / E-commerce"
+targetType: "D2C"
 url: "https://freddypaske.com"
 coverImage: "/images/projects/freddy-paske/freddy-paske-cover.jpeg"
 cardImage: "/images/projects/freddy-paske/freddy-paske-1.png"
@@ -23,6 +25,11 @@ The brief was to create a clearer, more cohesive website that reflected the cali
 The project began with UX research to understand how different visitors — collectors, commercial clients, and browsers — were navigating the site and where they were getting lost. From this, I developed a new information architecture and navigation system that created cleaner pathways between galleries, product pages, and contact points.
 
 The visual direction takes a minimal, gallery-inspired approach: clean layouts, generous spacing, and restrained typography that steps back and lets the artwork lead. The e-commerce experience was redesigned to surface clear, transparent information about sizing, formats, and pricing — giving buyers the confidence to make considered purchases without friction.
+::
+
+::stats
+2 | Audience types designed for (collectors & commercial clients)
+3 | Key pathways redesigned (galleries, products & contact)
 ::
 
 ::image-grid

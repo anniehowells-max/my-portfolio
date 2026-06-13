@@ -2,6 +2,8 @@
 title: "Wolfie"
 about: "Website design for raw dog food producer Wolfie."
 role: ["0-1", "UX/UI Design", "Web Design"]
+sector: "Pet Food / E-commerce"
+targetType: "D2C"
 url: "https://hellowolfie.com"
 coverImage: "/images/projects/wolfie/wolfie-cover.png bottom"
 cardImage: "/images/projects/wolfie/wolfie-2.png"
@@ -25,6 +27,11 @@ I led the project end-to-end, starting with research into the raw dog food categ
 A core component of the experience is the meal plan questionnaire, integrated directly into the Wolfie homepage to support users in finding the right feeding approach for their dog. The questionnaire design is simple, intuitive and encourages exploration without feeling overwhelming. 
 
 The result is a cohesive, accessible digital presence that aligns with Wolfie’s values, supports user needs and sets the brand up for growth in a competitive category.
+::
+
+::stats
+0→1 | Complete digital presence built from scratch
+1 | Integrated meal plan questionnaire
 ::
 
 ::image-grid

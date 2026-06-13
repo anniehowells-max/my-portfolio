@@ -30,10 +30,11 @@ const styles = {
   },
   overline: {
     fontSize: '0.75rem',
-    fontWeight: '600',
+    fontWeight: '400',
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
     color: 'var(--color-accent)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   heading: {
     fontSize: 'clamp(2rem, 5vw, 3.5rem)',

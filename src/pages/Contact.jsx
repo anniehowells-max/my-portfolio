@@ -5,6 +5,7 @@ function Contact() {
     name: '',
     email: '',
     message: '',
+    referral: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState(false)
@@ -39,6 +40,11 @@ function Contact() {
             I'm currently open to new projects. Fill in the form below
             and I'll get back to you within a couple of days.
           </p>
+        </div>
+
+        <div style={styles.testimonial}>
+          <p style={styles.testimonialQuote}>"Thanks a lot Annie, I’m very happy. Always pleasant to work with people that have a great aesthetic in addition to their technical skills. Bravo again."</p>
+          <p style={styles.testimonialAuthor}>— Guillaume de Saint Lager, Paragone</p>
         </div>
 
         {submitted ? (
@@ -88,6 +94,18 @@ function Contact() {
                 style={styles.textarea}
               />
             </div>
+            <div style={styles.field}>
+              <label style={styles.label2} htmlFor="referral">How did you find me?</label>
+              <input
+                id="referral"
+                name="referral"
+                type="text"
+                placeholder="Google, Instagram, word of mouth..."
+                value={formData.referral}
+                onChange={handleChange}
+                style={styles.input}
+              />
+            </div>
             {error && (
               <p style={styles.errorText}>
                 Something went wrong. Please try again.
@@ -124,10 +142,11 @@ const styles = {
   },
   label: {
     fontSize: '0.75rem',
-    fontWeight: '600',
+    fontWeight: '400',
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
     color: 'var(--color-accent)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   title: {
     fontSize: 'clamp(2rem, 5vw, 3.5rem)',
@@ -138,6 +157,29 @@ const styles = {
   subtitle: {
     fontSize: '1rem',
     color: '#555',
+  },
+  testimonial: {
+    borderLeft: '2px solid var(--color-accent)',
+    paddingLeft: '1.25rem',
+  },
+  testimonialQuote: {
+    fontSize: '1.1rem',
+    fontStyle: 'italic',
+    fontWeight: '500',
+    lineHeight: 1.6,
+    letterSpacing: '-0.01em',
+    color: 'var(--color-text-dark)',
+    margin: '0 0 0.5rem',
+  },
+  testimonialAuthor: {
+    fontSize: '0.8rem',
+    fontWeight: '400',
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    color: 'var(--color-text-dark)',
+    opacity: 0.45,
+    margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   form: {
     display: 'flex',

@@ -56,12 +56,20 @@ function Projects() {
             onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
           >
             {(project.cardImage || project.coverImage) && (
-              <div
-                style={{
-                  ...styles.coverImage,
-                  backgroundImage: `url(${(project.cardImage || project.coverImage).split(' ')[0]})`,
-                }}
-              />
+              <div style={{ position: 'relative' }}>
+                <div
+                  style={{
+                    ...styles.coverImage,
+                    backgroundImage: `url(${(project.cardImage || project.coverImage).split(' ')[0]})`,
+                  }}
+                />
+                {project.slug === 'orserio' && (
+                  <div style={styles.awardBadge}>
+                    <span>★</span>
+                    <span>Ecommerce Design Award Winner</span>
+                  </div>
+                )}
+              </div>
             )}
             <div style={styles.projectRow}>
               <span style={styles.projectNumber}>
@@ -195,6 +203,24 @@ const styles = {
     backgroundColor: 'rgba(64,62,58,0.08)',
     color: 'rgba(64,62,58,0.6)',
     letterSpacing: '0.02em',
+  },
+  awardBadge: {
+    position: 'absolute',
+    bottom: '0.85rem',
+    left: '0.85rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.4rem',
+    backgroundColor: 'rgba(0, 0, 0, 0.65)',
+    backdropFilter: 'blur(6px)',
+    color: 'var(--color-accent)',
+    fontSize: '0.68rem',
+    fontWeight: '600',
+    letterSpacing: '0.07em',
+    textTransform: 'uppercase',
+    padding: '0.35rem 0.75rem',
+    borderRadius: '100px',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   arrow: {
     fontSize: '1rem',

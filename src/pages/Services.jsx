@@ -94,9 +94,9 @@ export default function Services() {
       </section>
 
       {/* Two-column services section */}
-      <section style={styles.twoCol}>
+      <section style={styles.twoCol} className="services-two-col">
         {/* Left: sticky "What I Offer" */}
-        <div style={styles.leftCol}>
+        <div style={styles.leftCol} className="services-left-col">
           <p style={styles.eyebrow}>What I offer</p>
           <h2 style={styles.leftHeading}>
             Strategic design,<br />built to perform.
@@ -104,13 +104,21 @@ export default function Services() {
           <p style={styles.leftBody}>
             From full website builds to brand identities and UX improvements — every service is focused on clarity, usability, and results that last.
           </p>
+          <div style={styles.clientTypes}>
+            <p style={styles.clientLabel}>Who I work with</p>
+            <div style={styles.clientTags}>
+              <span style={styles.clientTag}>D2C</span>
+              <span style={styles.clientTag}>B2B</span>
+              <span style={styles.clientTag}>B2C</span>
+            </div>
+          </div>
           <a href="/enquire" style={styles.leftCta}>Enquire Now</a>
         </div>
 
         {/* Right: accordions */}
-        <div style={styles.rightCol}>
+        <div style={styles.rightCol} className="services-right-col">
           {services.map((s, i) => (
-            <div key={i} style={styles.accordionItem}>
+            <div key={i} style={{ ...styles.accordionItem, ...(i === services.length - 1 ? { flex: 1 } : {}) }}>
               <button
                 style={styles.accordionHeader}
                 onClick={() => setOpenService(openService === i ? null : i)}
@@ -137,7 +145,7 @@ export default function Services() {
       {/* CTA Band */}
       <section style={styles.ctaBand}>
         <p style={styles.ctaQuote}>"Beautiful, slick, calm and clear, visually stunning."</p>
-        <p style={styles.ctaAuthor}>— Betsy Limpenny @ The Interiors Edit</p>
+        <p style={styles.ctaAuthor}>— Betsy Limpenny, The Interiors Edit</p>
         <a href="/enquire" style={styles.ctaBtn}>Enquire Now</a>
       </section>
 
@@ -168,6 +176,19 @@ export default function Services() {
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(24px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+          .services-two-col {
+            grid-template-columns: 1fr !important;
+          }
+          .services-left-col {
+            position: static !important;
+            padding: 3rem 1.5rem 2rem !important;
+          }
+          .services-right-col {
+            border-left: none !important;
+            border-top: 1px solid rgba(255,255,255,0.08);
+          }
         }
       `}</style>
     </div>
@@ -215,7 +236,7 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     borderTop: "1px solid rgba(255,255,255,0.08)",
-    alignItems: "start",
+    alignItems: "stretch",
   },
 
   // Left sticky column
@@ -233,6 +254,8 @@ const styles = {
     textTransform: "uppercase",
     opacity: 0.4,
     margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: "400",
   },
   leftHeading: {
     fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
@@ -248,18 +271,49 @@ const styles = {
     lineHeight: 1.8,
     margin: 0,
   },
+  clientTypes: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+  },
+  clientLabel: {
+    fontSize: '0.72rem',
+    fontWeight: '400',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase',
+    opacity: 0.4,
+    margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+  },
+  clientTags: {
+    display: 'flex',
+    gap: '0.5rem',
+    flexWrap: 'wrap',
+  },
+  clientTag: {
+    fontSize: '0.72rem',
+    fontWeight: '500',
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase',
+    padding: '0.3rem 0.75rem',
+    borderRadius: '100px',
+    border: '1px solid rgba(255,255,255,0.2)',
+    color: 'rgba(255,255,255,0.5)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+  },
   leftCta: {
     display: "inline-block",
     marginTop: "0.5rem",
     padding: "0.85rem 2.2rem",
-    border: "1px solid rgba(255,255,255,0.3)",
-    color: "var(--color-text-light, #f5f5f0)",
+    border: "none",
+    backgroundColor: "var(--color-accent)",
+    color: "#fff",
     textDecoration: "none",
     fontSize: "0.85rem",
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     fontWeight: "600",
-    transition: "background 0.2s, border-color 0.2s",
+    transition: "opacity 0.2s",
     borderRadius: "2px",
     alignSelf: "flex-start",
   },
@@ -268,6 +322,8 @@ const styles = {
   rightCol: {
     padding: 0,
     borderLeft: "1px solid rgba(255,255,255,0.08)",
+    display: "flex",
+    flexDirection: "column",
   },
 
   // Accordion
@@ -353,22 +409,26 @@ const styles = {
     opacity: 0.9,
   },
   ctaAuthor: {
-    fontSize: "0.85rem",
+    fontSize: "0.75rem",
     opacity: 0.4,
-    letterSpacing: "0.05em",
+    letterSpacing: "0.15em",
+    textTransform: "uppercase",
+    fontWeight: "400",
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
     margin: "0 0 1rem",
   },
   ctaBtn: {
     display: "inline-block",
     padding: "0.85rem 2.2rem",
-    border: "1px solid rgba(255,255,255,0.3)",
-    color: "var(--color-text-light, #f5f5f0)",
+    border: "none",
+    backgroundColor: "var(--color-accent)",
+    color: "#fff",
     textDecoration: "none",
     fontSize: "0.85rem",
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     fontWeight: "600",
-    transition: "background 0.2s, border-color 0.2s",
+    transition: "opacity 0.2s",
     borderRadius: "2px",
   },
 

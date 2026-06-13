@@ -3,7 +3,10 @@ function Hero() {
     <section style={styles.section} className="hero-section">
       <div style={styles.overlay} />
       <div style={styles.content}>
-        <p style={styles.greeting}></p>
+        <div style={styles.awardPill}>
+          <span style={styles.awardIcon}>★</span>
+          <span>Ecommerce Design Award Winning Work</span>
+        </div>
         <h1 style={styles.headline}>
           Helping small businesses<br />
           find their <span style={styles.accent}>best version</span>
@@ -13,6 +16,10 @@ function Hero() {
           small businesses and growing brands who need clarity, structure
           and a website that actually works.
         </p>
+        <div style={styles.testimonial}>
+          <p style={styles.testimonialQuote}>"We are obsessed with Annie's work, it looks so fab"</p>
+          <p style={styles.testimonialAuthor}>— Ellie Proud, 4media group / Genaura</p>
+        </div>
         <div style={styles.buttons}>
           <a href="/work" style={styles.buttonPrimary}>View my work</a>
           <a href="/enquire" style={styles.buttonSecondary}>Get in touch</a>
@@ -58,6 +65,46 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '1.5rem',
+  },
+  awardPill: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    backgroundColor: 'transparent',
+    border: 'none',
+    color: 'var(--color-text-dark)',
+    fontSize: '0.72rem',
+    fontWeight: '500',
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    padding: '0',
+    borderRadius: '100px',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    alignSelf: 'flex-start',
+  },
+  awardIcon: {
+    fontSize: '0.65rem',
+  },
+  testimonial: {
+    borderLeft: '2px solid var(--color-accent)',
+    paddingLeft: '1rem',
+  },
+  testimonialQuote: {
+    fontSize: '0.95rem',
+    fontStyle: 'italic',
+    fontWeight: '400',
+    lineHeight: 1.5,
+    color: 'rgba(255, 253, 250, 0.75)',
+    margin: '0 0 0.35rem',
+  },
+  testimonialAuthor: {
+    fontSize: '0.72rem',
+    fontWeight: '400',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    color: 'rgba(255, 253, 250, 0.5)',
+    margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   greeting: {
     fontSize: '1.1rem',

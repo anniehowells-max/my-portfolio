@@ -2,6 +2,8 @@
 title: "Lebara"
 about: "Making Lebara's social posts come to life with bold, energetic design that cuts through the noise and appeals to younger, mobile-first audiences."
 role: ["Social Media Design", "Graphic Design"]
+sector: "Telecommunications"
+targetType: "D2C"
 url: "https://www.instagram.com/lebara.mobile/"
 coverImage: "/images/projects/lebara/lebara-cover.png"
 cardImage: "/images/projects/lebara/lebara-card.png"
@@ -23,6 +25,11 @@ The work also extended to supporting visuals for their Amazon storefront, requir
 I developed a vibrant, high-energy visual system built around bold colour, oversized smiley graphics, and dynamic layouts designed to stop the scroll. The aesthetic leans into a playful, accessible tone that connects with younger audiences without losing brand coherence.
 
 The same visual language was extended to the Amazon storefront, adapting the approach to suit a more product-focused context while maintaining consistency across touchpoints. The result is a confident, recognisable social presence that feels current, energetic and distinctly Lebara.
+::
+
+::stats
+2 | Platforms (social media & Amazon storefront)
+1 | Unified visual design system across all content
 ::
 
 ::image-grid

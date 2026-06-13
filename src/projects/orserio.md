@@ -1,7 +1,9 @@
 ---
 title: "Orserio"
-about: "Website and UX design for a menswear business with an aim to create clothes with a personalised fit."
+about: "In this 0-1 project I helped a newly founded mens clothing brand create a digital e-commerce experience with UX flows to best help their customers.<br><br>Featured and awarded by the <a href=\"https://www.ecomdesignawards.com/websites/orserio\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: inherit; text-decoration: underline;\">Ecommerce Design Awards</a>."
 role: ["0-1", "UX Design", "Web Design"]
+sector: "Fashion / Ecommerce"
+targetType: "D2C"
 url: "https://orserio.com"
 coverImage: "/images/projects/orserio/orserio-1.png"
 cardImage: "/images/projects/orserio/orserio-1.png"
@@ -21,16 +23,10 @@ Orserio is a menswear brand with a clear and confident proposition: form-fitting
 I designed and built the full Shopify website from scratch, developing custom sections with the support of AI tooling to extend beyond the platform's standard capabilities. The visual direction was shaped to reflect the brand's sharp, confident aesthetic — imagery was edited to ensure a consistent and elevated look across the site. The result is a cohesive ecommerce experience that presents Orserio's offering clearly, gives the product room to speak for itself, and provides a strong foundation for the brand's online presence.
 ::
 
-::text-two-col
-## Scope
-
-8 pages designed and built end-to-end for a brand with no prior web presence, from research through UX design, high-fidelity design, Shopify development, and photography editing. Scope extended beyond the site itself to include ongoing graphic design and ad creative.
-
-||
-
-## Outcome
-
-The client responded very positively to the final designs. As an ongoing working relationship, performance data is still being gathered, with **quantitative results to follow**.
+::stats
+£90.18 | Average order value
+1.21% | Conversion rate
+11.66% | Returning customer rate
 ::
 
 ::image-grid

@@ -2,6 +2,8 @@
 title: "Ultimate Library"
 about: "Website redesign for a bespoke book curation service, clarifying its offering and positioning the brand as a premium, expert destination for individuals and businesses."
 role: ["UX Design", "Web Design", "Brand Identity"]
+sector: "Luxury Services"
+targetType: "B2B / D2C"
 url: "https://ultimatelibrary.co.uk"
 coverImage: "/images/projects/ultimate-library/ultimate-library-cover.png"
 cardImage: "/images/projects/ultimate-library/ultimate-library-2.jpg"
@@ -25,16 +27,10 @@ I approached the redesign with a UX-first methodology, beginning with a structur
 The visual direction drew on publishing and luxury references — a subtle colour palette, carefully chosen typography, and balanced layouts that give the content space to breathe. Editorial storytelling is woven throughout, with content hierarchies that reward both quick scanning and deeper reading. The result positions Ultimate Library as an expert brand whose digital experience matches the bespoke, considered nature of its service.
 ::
 
-::text-two-col
-## Scope
-
-**9 pages designed end-to-end**, from discovery and competitive research through wireframing, prototyping, and high-fidelity design. Deliverables included a refreshed visual identity, full brand guidelines, and a handoff-ready prototype.
-
-||
-
-## Outcome
-
-The client reported that the **redesigned experience resonated significantly** more with their target audience — a better articulated brand and clearer user journeys that they attributed to **bringing in more clients**.
+::stats
+9 | Pages designed end-to-end
+2 | Audience types (individuals & corporate clients)
+1 | Full brand guidelines delivered
 ::
 
 ::image-grid

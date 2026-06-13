@@ -2,6 +2,8 @@
 title: "Oetker Collection Boutique"
 about: "E-commerce website design for the retail division of Oetker Collection Hotels, bringing the brand's understated luxury into a curated digital shopping experience."
 role: ["UX Design", "Web Design"]
+sector: "Luxury / Hospitality"
+targetType: "D2C"
 url: "https://boutique.oetkerhotels.com"
 coverImage: "/images/projects/oetker-collection/oetker-collection-cover.png"
 cardImage: "/images/projects/oetker-collection/oetker-collection-cover.png"
@@ -25,16 +27,9 @@ I began with a strategic review of the product assortment and target audience, d
 Product pages were designed in an editorial style, connecting each item back to the hotel experiences and craftsmanship behind it. Considered typography and spatial composition reinforce the sense of curation throughout, positioning the boutique as a refined extension of the Oetker Collection rather than simply a retail destination.
 ::
 
-::text-two-col
-## Scope
-
-4 pages designed and built in Shopify, with a focus on optimising user journeys across the browsing and product discovery experience. This was a redesign of an existing site, bringing the digital retail experience in line with the brand's wider luxury positioning.
-
-||
-
-## Outcome
-
-The client was very happy with the final result. Performance data has not yet been gathered, but this is something to follow up on given the strength of the brand.
+::stats
+4 | Pages redesigned in Shopify
+1 | Editorial e-commerce experience for a world-class luxury hotel collection
 ::
 
 <!--::video-full-->

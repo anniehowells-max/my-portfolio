@@ -18,7 +18,7 @@ export default function About() {
           <h2 style={styles.sectionHeading}>Meet Annie</h2>
           <div style={styles.sectionBody}>
             <p style={styles.bodyText}>
-              Annie designs thoughtful brands and digital experiences — helping people understand who you are and why you matter. She focuses on UX-led websites and visual identities, with an emphasis on clarity, usability, and storytelling to ensure brands feel considered, confident, and human.
+              I design thoughtful brands and digital experiences — helping people understand who you are and why you matter. I work with D2C, B2B, and B2C businesses, focusing on UX-led websites and visual identities with an emphasis on clarity, usability, and storytelling to ensure brands feel considered, confident, and human.
             </p>
             <div style={styles.aboutImage} />
           </div>
@@ -132,9 +132,10 @@ const styles = {
     letterSpacing: '0.15em',
     textTransform: 'uppercase',
     opacity: 0.35,
-    fontWeight: '500',
+    fontWeight: '400',
     paddingTop: '0.25rem',
     margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   sectionBody: {
     display: 'flex',
@@ -191,6 +192,8 @@ const styles = {
     textTransform: 'uppercase',
     opacity: 0.4,
     margin: 0,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: '400',
   },
   ctaHeading: {
     fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
