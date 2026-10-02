@@ -1,4 +1,19 @@
+import { useEffect, useState } from 'react'
 import { useLocale } from '../i18n'
+
+// Project images shown in the hero. They fade from one to the next.
+// The images in /images/hero-slides are resized copies (2400px wide) so the homepage loads quickly.
+// position controls which part of the image stays visible (e.g. 'center', 'right', '70% center').
+// slug links the small caption to the case study; leave it out to hide the caption.
+const slides = [
+  { image: '/images/hero-slides/genaura.jpg', position: '65% center', title: 'Genaura', slug: 'genaura' },
+  { image: '/images/hero-slides/orserio.jpg', position: 'center', title: 'Orserio', slug: 'orserio' },
+  { image: '/images/hero-slides/wolfie.jpg', position: 'center', title: 'Wolfie', slug: 'wolfie' },
+  { image: '/images/hero-slides/oetker-collection.jpg', position: 'center', title: 'Oetker Collection Boutique', slug: 'oetker-collection-boutique' },
+]
+
+const SLIDE_DURATION = 6000 // milliseconds each image is shown
+const FADE_DURATION = 1500 // milliseconds the fade takes
 
 const text = {
   en: {
@@ -9,6 +24,7 @@ const text = {
     tagline: 'Independent UX and web designer based in London, working with small businesses and growing brands who need clarity, structure and a website that actually works.',
     primary: 'View my work',
     secondary: 'Get in touch',
+    project: 'Project',
   },
   sv: {
     award: 'Prisat i Ecommerce Design Awards',
@@ -18,15 +34,47 @@ const text = {
     tagline: 'Fristående UX- och webbdesigner i Göteborg. Jag jobbar med små företag och växande varumärken som behöver tydlighet, struktur och en webbplats som faktiskt fungerar.',
     primary: 'Se mina projekt',
     secondary: 'Hör av dig',
+    project: 'Projekt',
   },
 }
 
 function Hero() {
   const { lang, to } = useLocale()
   const t = text[lang]
+  const [active, setActive] = useState(0)
+  // Only download an image once it's shown or next in line
+  const [furthest, setFurthest] = useState(0)
+
+  useEffect(() => {
+    // Respect people who have asked their device to reduce motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (slides.length < 2) return
+    const timer = setInterval(() => {
+      setActive(current => {
+        const next = (current + 1) % slides.length
+        setFurthest(previous => Math.max(previous, next))
+        return next
+      })
+    }, SLIDE_DURATION)
+    return () => clearInterval(timer)
+  }, [])
+
+  const current = slides[active]
 
   return (
     <section style={styles.section} className="hero-section">
+      {slides.map((slide, i) => (
+        <div
+          key={slide.image}
+          aria-hidden="true"
+          style={{
+            ...styles.slide,
+            backgroundImage: i <= furthest + 1 ? `url(${slide.image})` : 'none',
+            backgroundPosition: slide.position || 'center',
+            opacity: i === active ? 1 : 0,
+          }}
+        />
+      ))}
       <div style={styles.overlay} />
       <div style={styles.content}>
         <div style={styles.awardPill}>
@@ -53,11 +101,19 @@ function Hero() {
           <img src="/images/shopify-logo.png" alt="Shopify" style={styles.logo} />
         </div>
       </div>
+      {current.slug && (
+        <a href={to(`/${current.slug}`)} style={styles.caption} className="hero-caption">
+          {t.project}: {current.title} →
+        </a>
+      )}
       <style>{`
         @media (max-width: 768px) {
           .hero-section {
             align-items: flex-end !important;
             padding: 0 1.5rem 3rem !important;
+          }
+          .hero-caption {
+            display: none !important;
           }
         }
       `}</style>
@@ -69,18 +125,35 @@ const styles = {
   section: {
     position: 'relative',
     height: '100vh',
-    backgroundImage: 'url(/images/hero.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    overflow: 'hidden',
     backgroundColor: '#1C1C1C',
     display: 'flex',
     alignItems: 'center',
     padding: '0 4rem',
   },
+  slide: {
+    position: 'absolute',
+    inset: 0,
+    backgroundSize: 'cover',
+    transition: `opacity ${FADE_DURATION}ms ease-in-out`,
+  },
   overlay: {
     position: 'absolute',
     inset: 0,
-    backgroundColor: 'rgba(28, 28, 28, 0.25)',
+    // Darker on the left where the text sits, lighter on the right so the project shows through
+    background: 'linear-gradient(90deg, rgba(28, 28, 28, 0.72) 0%, rgba(28, 28, 28, 0.45) 45%, rgba(28, 28, 28, 0.12) 100%)',
+  },
+  caption: {
+    position: 'absolute',
+    right: '2rem',
+    bottom: '1.75rem',
+    zIndex: 1,
+    fontSize: '0.72rem',
+    fontWeight: '500',
+    letterSpacing: '0.06em',
+    color: 'rgba(255, 253, 250, 0.75)',
+    textDecoration: 'none',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
   },
   content: {
     position: 'relative',
@@ -96,7 +169,7 @@ const styles = {
     gap: '0.5rem',
     backgroundColor: 'transparent',
     border: 'none',
-    color: 'var(--color-text-dark)',
+    color: 'rgba(255, 253, 250, 0.8)',
     fontSize: '0.72rem',
     fontWeight: '500',
     letterSpacing: '0.06em',
