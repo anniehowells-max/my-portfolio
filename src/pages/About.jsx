@@ -104,7 +104,6 @@ const styles = {
     backgroundColor: 'var(--color-text-dark, #403E3A)',
     color: 'var(--color-text-light, #f5f5f0)',
     minHeight: '100vh',
-    fontFamily: "'Instrument Sans', sans-serif",
   },
 
   // Hero
