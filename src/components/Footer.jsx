@@ -1,19 +1,61 @@
+import { useLocale } from '../i18n'
+import { landingPages } from '../landingPages'
+
+const text = {
+  en: {
+    work: 'Work',
+    services: 'Services',
+    insights: 'Insights',
+    about: 'About',
+    enquire: 'Enquire',
+    email: 'Email',
+    tagline: 'Annie Howells Design — an independent design practice.',
+  },
+  sv: {
+    work: 'Projekt',
+    services: 'Tjänster',
+    insights: 'Artiklar',
+    about: 'Om mig',
+    enquire: 'Kontakta mig',
+    email: 'E-post',
+    tagline: 'Annie Howells Design, en oberoende designstudio.',
+    localHeading: 'Webbdesign i Göteborg',
+    localArticle: 'Så väljer du webbdesigner i Göteborg',
+  },
+}
+
 function Footer() {
+  const { lang, to } = useLocale()
+  const t = text[lang]
+
   return (
     <footer style={styles.footer}>
       <div className="footer-inner">
         <div className="footer-top">
-          <a href="/" style={styles.logo}>
+          <a href={to('/')} style={styles.logo}>
             <img src="/AnnieHowellsDesignAnimatedLogo.gif" alt="Annie Howells Design" className="footer-logo-image" />
           </a>
+          {lang === 'sv' && (
+            <nav aria-label={t.localHeading} style={styles.localLinks}>
+              <p style={styles.localHeading}>{t.localHeading}</p>
+              {landingPages.map(page => (
+                <a key={page.slug} href={`/sv/${page.slug}`} style={styles.localLink} className="footer-nav-link">
+                  {page.footerLabel}
+                </a>
+              ))}
+              <a href="/sv/insights/webbdesigner-goteborg" style={styles.localLink} className="footer-nav-link">
+                {t.localArticle}
+              </a>
+            </nav>
+          )}
           <nav className="footer-nav">
             <div style={styles.navLinks}>
-              <a href="/work" style={styles.navLink} className="footer-nav-link">Work</a>
-              <a href="/services" style={styles.navLink} className="footer-nav-link">Services</a>
-              <a href="/insights" style={styles.navLink} className="footer-nav-link">Insights</a>
-              <a href="/about" style={styles.navLink} className="footer-nav-link">About</a>
+              <a href={to('/work')} style={styles.navLink} className="footer-nav-link">{t.work}</a>
+              <a href={to('/services')} style={styles.navLink} className="footer-nav-link">{t.services}</a>
+              <a href={to('/insights')} style={styles.navLink} className="footer-nav-link">{t.insights}</a>
+              <a href={to('/about')} style={styles.navLink} className="footer-nav-link">{t.about}</a>
             </div>
-            <a href="/enquire" style={styles.enquireButton}>Enquire</a>
+            <a href={to('/enquire')} style={styles.enquireButton}>{t.enquire}</a>
           </nav>
         </div>
         <div className="footer-bottom">
@@ -34,7 +76,7 @@ function Footer() {
             <a href="mailto:anniehowells@gmail.com"
               style={styles.socialIcon}
               className="nav-social-icon"
-              aria-label="Email"
+              aria-label={t.email}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -43,7 +85,7 @@ function Footer() {
             </a>
           </div>
           <p style={styles.copyright}>
-            © {new Date().getFullYear()} Annie Howells Design — an independent design practice.
+            © {new Date().getFullYear()} {t.tagline}
           </p>
         </div>
       </div>
@@ -83,6 +125,27 @@ const styles = {
     fontWeight: '600',
     fontSize: '0.95rem',
     borderRadius: '4px',
+  },
+  localLinks: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '0.5rem',
+  },
+  localHeading: {
+    fontSize: '0.7rem',
+    fontWeight: '500',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    color: 'var(--color-text-light, #f5f5f0)',
+    opacity: 0.4,
+    margin: '0 0 0.25rem',
+    fontFamily: 'Plus Jakarta Sans, sans-serif',
+  },
+  localLink: {
+    fontSize: '0.9rem',
+    color: 'var(--color-text-light, #f5f5f0)',
+    opacity: 0.6,
   },
   socials: {
     display: 'flex',

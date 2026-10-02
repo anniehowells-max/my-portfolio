@@ -1,14 +1,31 @@
+import { useLocale } from '../i18n'
+
+const text = {
+  en: {
+    overline: 'Contact',
+    heading: "Let's work together",
+    body: "I'm currently open to new projects. Whether you have a project in mind, a question, or just want to say hi — I'd love to hear from you.",
+    button: 'Get in touch',
+  },
+  sv: {
+    overline: 'Kontakt',
+    heading: 'Ska vi jobba ihop?',
+    body: 'Jag tar just nu emot nya projekt. Har du något på gång, en fråga eller vill bara säga hej? Hör gärna av dig.',
+    button: 'Hör av dig',
+  },
+}
+
 function Contact() {
+  const { lang, to } = useLocale()
+  const t = text[lang]
+
   return (
     <section id="contact" style={styles.section}>
       <div style={styles.inner}>
-        <p style={styles.overline}>Contact</p>
-        <h2 style={styles.heading}>Let's work together</h2>
-        <p style={styles.body}>
-          I'm currently open to new projects. Whether you have a project
-          in mind, a question, or just want to say hi — I'd love to hear from you.
-        </p>
-        <a href="/enquire" style={styles.button}>Get in touch</a>
+        <p style={styles.overline}>{t.overline}</p>
+        <h2 style={styles.heading}>{t.heading}</h2>
+        <p style={styles.body}>{t.body}</p>
+        <a href={to('/enquire')} style={styles.button}>{t.button}</a>
       </div>
     </section>
   )

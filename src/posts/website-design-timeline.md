@@ -2,7 +2,7 @@
 title: "How long should it take to design a website? (And why rushing it costs you more)"
 date: "2026-03-30"
 tags: ["Web Design", "Small Business"]
-excerpt: "One of the most common questions I get asked is: How long does it take do design a website?"
+excerpt: "One of the most common questions I get asked is: How long does it take to design a website?"
 coverImage: "/images/blog/how-long-should-it-take-to-design-a-website.jpg"
 ctaText: "If you're planning a new website and want to understand what a realistic timeline looks like for your project, I'm happy to talk it through. I design UX-led websites for small businesses and growing brands that need clarity, structure and long-term performance."
 ---

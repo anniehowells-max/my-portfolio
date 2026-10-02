@@ -1,16 +1,28 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { marked } from 'marked'
-import frontMatter from 'front-matter'
+import { useLocale } from '../i18n'
+import { getProject } from '../content'
 
-const projectFiles = import.meta.glob('../projects/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getProject(slug) {
-  const filepath = `../projects/${slug}.md`
-  const raw = projectFiles[filepath]
-  if (!raw) return null
-  const { attributes, body } = frontMatter(raw)
-  return { ...attributes, body }
+const text = {
+  en: {
+    notFound: 'Project not found',
+    back: '← Back to Work',
+    services: 'Services',
+    targetType: 'Target Type',
+    sector: 'Sector',
+    year: 'Year',
+    url: 'URL',
+  },
+  sv: {
+    notFound: 'Projektet hittades inte',
+    back: '← Tillbaka till projekt',
+    services: 'Tjänster',
+    targetType: 'Målgrupp',
+    sector: 'Bransch',
+    year: 'År',
+    url: 'Webbplats',
+  },
 }
 
 function parseSections(body) {
@@ -132,7 +144,9 @@ function ImageGrid({ images }) {
 
 function ProjectIndividual() {
   const { slug } = useParams()
-  const project = getProject(slug)
+  const { lang, to } = useLocale()
+  const t = text[lang]
+  const project = getProject(slug, lang)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -142,8 +156,8 @@ function ProjectIndividual() {
     return (
       <main style={styles.main}>
         <div style={styles.notFound}>
-          <h1>Project not found</h1>
-          <a href="/work" style={styles.backLink}>← Back to Work</a>
+          <h1>{t.notFound}</h1>
+          <a href={to('/work')} style={styles.backLink}>{t.back}</a>
         </div>
       </main>
     )
@@ -163,7 +177,7 @@ function ProjectIndividual() {
           </div>
           <div style={styles.heroRight}>
             <div style={styles.metaBlock}>
-              <p style={styles.metaLabel}>Services</p>
+              <p style={styles.metaLabel}>{t.services}</p>
               <div style={styles.tags}>
                 {project.role && project.role.map(tag => (
                   <span key={tag} style={styles.tag}>{tag}</span>
@@ -173,23 +187,23 @@ function ProjectIndividual() {
             <div style={styles.metaGrid}>
               {project.targetType && (
                 <div style={styles.metaBlock}>
-                  <p style={styles.metaLabel}>Target Type</p>
+                  <p style={styles.metaLabel}>{t.targetType}</p>
                   <p style={styles.metaValue}>{project.targetType}</p>
                 </div>
               )}
               {project.sector && (
                 <div style={styles.metaBlock}>
-                  <p style={styles.metaLabel}>Sector</p>
+                  <p style={styles.metaLabel}>{t.sector}</p>
                   <p style={styles.metaValue}>{project.sector}</p>
                 </div>
               )}
               <div style={styles.metaBlock}>
-                <p style={styles.metaLabel}>Year</p>
+                <p style={styles.metaLabel}>{t.year}</p>
                 <p style={styles.metaValue}>{project.year}</p>
               </div>
               {project.url && (
                 <div style={styles.metaBlock}>
-                  <p style={styles.metaLabel}>URL</p>
+                  <p style={styles.metaLabel}>{t.url}</p>
                   <a href={project.url}
                     target="_blank"
                     rel="noreferrer"
@@ -212,7 +226,7 @@ function ProjectIndividual() {
       }} />
       </div>
 
-      <div style={styles.body}>
+      <div style={styles.body} lang={project.contentLang}>
         {sections.map((section, i) => {
           if (section.type === 'text') return <TextSection key={i} content={section.content} />
           if (section.type === 'text-two-col') return <TextTwoCol key={i} content={section.content} />
@@ -226,7 +240,7 @@ function ProjectIndividual() {
 
       <div style={styles.footerWrapper}>
         <div style={styles.footer}>
-          <a href="/work" style={styles.backLink}>← Back to Work</a>
+          <a href={to('/work')} style={styles.backLink}>{t.back}</a>
         </div>
       </div>
 

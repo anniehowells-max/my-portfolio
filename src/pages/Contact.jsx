@@ -1,6 +1,46 @@
 import { useState } from 'react'
+import { useLocale } from '../i18n'
+
+const text = {
+  en: {
+    label: 'Contact',
+    title: "Let's work together",
+    subtitle: "I'm currently open to new projects. Fill in the form below and I'll get back to you within a couple of days.",
+    success: "Thank you! I'll be in touch soon. 🎉",
+    name: 'Name',
+    namePlaceholder: 'Your name',
+    email: 'Email',
+    emailPlaceholder: 'your@email.com',
+    message: 'Message',
+    messagePlaceholder: 'Tell me about your project...',
+    referral: 'How did you find me?',
+    referralPlaceholder: 'Google, Instagram, word of mouth...',
+    error: 'Something went wrong. Please try again.',
+    submit: 'Send message',
+    formLanguage: 'English',
+  },
+  sv: {
+    label: 'Kontakt',
+    title: 'Ska vi jobba ihop?',
+    subtitle: 'Jag tar just nu emot nya projekt. Fyll i formuläret så hör jag av mig inom ett par dagar.',
+    success: 'Tack! Jag hör av mig snart. 🎉',
+    name: 'Namn',
+    namePlaceholder: 'Ditt namn',
+    email: 'E-post',
+    emailPlaceholder: 'din@epost.se',
+    message: 'Meddelande',
+    messagePlaceholder: 'Berätta om ditt projekt...',
+    referral: 'Hur hittade du mig?',
+    referralPlaceholder: 'Google, Instagram, tips från någon...',
+    error: 'Något gick fel. Försök igen.',
+    submit: 'Skicka meddelande',
+    formLanguage: 'Svenska',
+  },
+}
 
 function Contact() {
+  const { lang } = useLocale()
+  const t = text[lang]
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +60,7 @@ function Contact() {
     const response = await fetch('https://formspree.io/f/xlgadard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({ ...formData, language: t.formLanguage }),
     })
     if (response.ok) {
       setSubmitted(true)
@@ -34,60 +74,55 @@ function Contact() {
       <div style={styles.container}>
 
         <div style={styles.header}>
-          <p style={styles.label}>Contact</p>
-          <h1 style={styles.title}>Let's work together</h1>
-          <p style={styles.subtitle}>
-            I'm currently open to new projects. Fill in the form below
-            and I'll get back to you within a couple of days.
-          </p>
+          <p style={styles.label}>{t.label}</p>
+          <h1 style={styles.title}>{t.title}</h1>
+          <p style={styles.subtitle}>{t.subtitle}</p>
         </div>
 
         <div style={styles.testimonial}>
-          <p style={styles.testimonialQuote}>"Thanks a lot Annie, I’m very happy. Always pleasant to work with people that have a great aesthetic in addition to their technical skills. Bravo again."</p>
+          <p style={styles.testimonialQuote} lang="en">"Thanks a lot Annie, I’m very happy. Always pleasant to work with people that have a great aesthetic in addition to their technical skills. Bravo again."</p>
           <p style={styles.testimonialAuthor}>— Guillaume de Saint Lager, Paragone</p>
         </div>
 
         {submitted ? (
           <div style={styles.successBox}>
-            <p style={styles.successText}>
-              Thank you! I'll be in touch soon. 🎉
-            </p>
+            <p style={styles.successText}>{t.success}</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} style={styles.form}>
             <div style={styles.field}>
-              <label style={styles.label2} htmlFor="name">Name</label>
+              <label style={styles.label2} htmlFor="name">{t.name}</label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                placeholder="Your name"
+                placeholder={t.namePlaceholder}
                 value={formData.name}
                 onChange={handleChange}
                 style={styles.input}
               />
             </div>
             <div style={styles.field}>
-              <label style={styles.label2} htmlFor="email">Email</label>
+              <label style={styles.label2} htmlFor="email">{t.email}</label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="your@email.com"
+                placeholder={t.emailPlaceholder}
                 value={formData.email}
                 onChange={handleChange}
                 style={styles.input}
               />
             </div>
             <div style={styles.field}>
-              <label style={styles.label2} htmlFor="message">Message</label>
+              <label style={styles.label2} htmlFor="message">{t.message}</label>
               <textarea
                 id="message"
                 name="message"
                 required
-                placeholder="Tell me about your project..."
+                placeholder={t.messagePlaceholder}
                 value={formData.message}
                 onChange={handleChange}
                 rows={6}
@@ -95,24 +130,22 @@ function Contact() {
               />
             </div>
             <div style={styles.field}>
-              <label style={styles.label2} htmlFor="referral">How did you find me?</label>
+              <label style={styles.label2} htmlFor="referral">{t.referral}</label>
               <input
                 id="referral"
                 name="referral"
                 type="text"
-                placeholder="Google, Instagram, word of mouth..."
+                placeholder={t.referralPlaceholder}
                 value={formData.referral}
                 onChange={handleChange}
                 style={styles.input}
               />
             </div>
             {error && (
-              <p style={styles.errorText}>
-                Something went wrong. Please try again.
-              </p>
+              <p style={styles.errorText}>{t.error}</p>
             )}
             <button type="submit" style={styles.button}>
-              Send message
+              {t.submit}
             </button>
           </form>
         )}

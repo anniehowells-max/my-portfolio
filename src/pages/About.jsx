@@ -1,25 +1,52 @@
+import Contact from '../components/Contact'
+import { useLocale } from '../i18n'
+
 const heroImage = '/images/about-hero.jpg'
 
-import Contact from '../components/Contact'
+const text = {
+  en: {
+    title: 'About',
+    meetHeading: 'Meet Annie',
+    meet: 'I design thoughtful brands and digital experiences — helping people understand who you are and why you matter. I work with D2C, B2B, and B2C businesses, focusing on UX-led websites and visual identities with an emphasis on clarity, usability, and storytelling to ensure brands feel considered, confident, and human.',
+    workHeading: 'How I Work',
+    work1: "Every project starts with listening — understanding your goals, your audience, and what's already working. From there, I apply UX thinking and strategic design to structure content, define flows, and craft visuals that support real user needs.",
+    work2: "I'm comfortable with wireframes, Figma interfaces, and responsive layouts that feel natural on every device. My process is flexible, practical, and tailored to each project — ensuring the end result is both beautiful and performant.",
+    personalHeading: 'A Bit More Personal',
+    personal: 'Outside of design, I enjoy running, knitting, and experimenting with textiles and hand-made projects. I find the creative process — in all its forms — fuels my work.',
+    quote: '"If you share a love of good design, books, or strong coffee, we\'ll get along just fine."',
+  },
+  sv: {
+    title: 'Om mig',
+    meetHeading: 'Det här är jag',
+    meet: 'Jag designar genomtänkta varumärken och digitala upplevelser som hjälper människor att förstå vilka ni är och varför ni spelar roll. Jag jobbar med D2C-, B2B- och B2C-företag och fokuserar på UX-drivna webbplatser och visuella identiteter. Tydlighet, användbarhet och berättande står i centrum, så att varumärket känns genomtänkt, tryggt och mänskligt.',
+    workHeading: 'Så jobbar jag',
+    work1: 'Varje projekt börjar med att jag lyssnar och tar reda på era mål, er målgrupp och vad som redan fungerar. Sedan använder jag UX-tänk och strategisk design för att strukturera innehållet, definiera flöden och skapa en visuell form som utgår från verkliga behov.',
+    work2: 'Jag är van vid wireframes, gränssnitt i Figma och responsiva layouter som känns naturliga på alla enheter. Min process är flexibel, praktisk och anpassad efter varje projekt, så att resultatet blir både snyggt och välfungerande.',
+    personalHeading: 'Lite mer personligt',
+    personal: 'Utanför jobbet gillar jag att springa, sticka och experimentera med textil och hantverk. Den kreativa processen, i alla sina former, ger energi till mitt arbete.',
+    quote: '”Gillar du också bra design, böcker och starkt kaffe kommer vi att komma bra överens.”',
+  },
+}
 
 export default function About() {
+  const { lang } = useLocale()
+  const t = text[lang]
+
   return (
     <div style={styles.page}>
 
       {/* Hero */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <h1 style={styles.heroTitle}>About</h1>
+        <h1 style={styles.heroTitle}>{t.title}</h1>
       </section>
 
       {/* Meet Annie */}
       <section style={styles.section} className="about-section">
         <div style={styles.twoCol} className="about-two-col">
-          <h2 style={styles.sectionHeading}>Meet Annie</h2>
+          <h2 style={styles.sectionHeading}>{t.meetHeading}</h2>
           <div style={styles.sectionBody}>
-            <p style={styles.bodyText}>
-              I design thoughtful brands and digital experiences — helping people understand who you are and why you matter. I work with D2C, B2B, and B2C businesses, focusing on UX-led websites and visual identities with an emphasis on clarity, usability, and storytelling to ensure brands feel considered, confident, and human.
-            </p>
+            <p style={styles.bodyText}>{t.meet}</p>
             <div style={styles.aboutImage} />
           </div>
         </div>
@@ -28,14 +55,10 @@ export default function About() {
       {/* How I Work */}
       <section style={styles.section} className="about-section">
         <div style={styles.twoCol} className="about-two-col">
-          <h2 style={styles.sectionHeading}>How I Work</h2>
+          <h2 style={styles.sectionHeading}>{t.workHeading}</h2>
           <div style={styles.sectionBody}>
-            <p style={styles.bodyText}>
-              Every project starts with listening — understanding your goals, your audience, and what's already working. From there, I apply UX thinking and strategic design to structure content, define flows, and craft visuals that support real user needs.
-            </p>
-            <p style={styles.bodyText}>
-              I'm comfortable with wireframes, Figma interfaces, and responsive layouts that feel natural on every device. My process is flexible, practical, and tailored to each project — ensuring the end result is both beautiful and performant.
-            </p>
+            <p style={styles.bodyText}>{t.work1}</p>
+            <p style={styles.bodyText}>{t.work2}</p>
           </div>
         </div>
       </section>
@@ -43,14 +66,10 @@ export default function About() {
       {/* A Bit More Personal */}
       <section style={styles.section} className="about-section">
         <div style={styles.twoCol} className="about-two-col">
-          <h2 style={styles.sectionHeading}>A Bit More Personal</h2>
+          <h2 style={styles.sectionHeading}>{t.personalHeading}</h2>
           <div style={styles.sectionBody}>
-            <p style={styles.bodyText}>
-              Outside of design, I enjoy running, knitting, and experimenting with textiles and hand-made projects. I find the creative process — in all its forms — fuels my work.
-            </p>
-            <p style={styles.pullQuote}>
-              "If you share a love of good design, books, or strong coffee, we'll get along just fine."
-            </p>
+            <p style={styles.bodyText}>{t.personal}</p>
+            <p style={styles.pullQuote}>{t.quote}</p>
             <div style={styles.barbaricImage} />
           </div>
         </div>

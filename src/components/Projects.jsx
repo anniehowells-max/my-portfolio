@@ -1,21 +1,24 @@
 import { useNavigate } from 'react-router-dom'
-import frontMatter from 'front-matter'
+import { useLocale } from '../i18n'
+import { getProjects } from '../content'
 
-const projectFiles = import.meta.glob('../projects/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getProjects() {
-  return Object.entries(projectFiles)
-    .map(([filepath, content]) => {
-      const slug = filepath.replace('../projects/', '').replace('.md', '')
-      const { attributes } = frontMatter(content)
-      return { slug, ...attributes }
-    })
-    .sort((a, b) => (a.order || 0) - (b.order || 0))
-    .slice(0, 3)
+const text = {
+  en: {
+    heading: 'Selected Work',
+    cta: 'See all projects',
+    award: 'Ecommerce Design Award Winner',
+  },
+  sv: {
+    heading: 'Utvalda projekt',
+    cta: 'Se alla projekt',
+    award: 'Vinnare i Ecommerce Design Awards',
+  },
 }
 
 function Projects() {
-  const projects = getProjects()
+  const { lang, to } = useLocale()
+  const t = text[lang]
+  const projects = getProjects(lang).slice(0, 3)
   const navigate = useNavigate()
 
   return (
@@ -23,8 +26,8 @@ function Projects() {
 
       {/* Left sticky column */}
       <div style={styles.leftCol} className="projects-left-col">
-        <h2 style={styles.leftHeading}>Selected Work</h2>
-        <a href="/work" style={styles.leftCta}>See all projects</a>
+        <h2 style={styles.leftHeading}>{t.heading}</h2>
+        <a href={to('/work')} style={styles.leftCta}>{t.cta}</a>
       </div>
 
       {/* Right project column */}
@@ -51,7 +54,7 @@ function Projects() {
           <div
             key={project.slug}
             style={styles.projectBlock}
-            onClick={() => navigate(`/${project.slug}`)}
+            onClick={() => navigate(to(`/${project.slug}`))}
             onMouseEnter={e => { e.currentTarget.style.opacity = '0.8' }}
             onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
           >
@@ -66,7 +69,7 @@ function Projects() {
                 {project.slug === 'orserio' && (
                   <div style={styles.awardBadge}>
                     <span>★</span>
-                    <span>Ecommerce Design Award Winner</span>
+                    <span>{t.award}</span>
                   </div>
                 )}
               </div>

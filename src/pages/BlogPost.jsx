@@ -1,21 +1,36 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { marked } from 'marked'
-import frontMatter from 'front-matter'
+import { useLocale } from '../i18n'
+import { getPost } from '../content'
 
-const postFiles = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getPost(slug) {
-  const filepath = `../posts/${slug}.md`
-  const raw = postFiles[filepath]
-  if (!raw) return null
-  const { attributes, body } = frontMatter(raw)
-  return { ...attributes, content: body }
+const text = {
+  en: {
+    notFound: 'Post not found',
+    back: '← Back to Insights',
+    englishOnly: '',
+    ctaText: "I design UX-led websites for small businesses and growing brands that need clarity, structure and long-term performance. If you have a project in mind, I'd love to hear from you.",
+    ctaHeading: 'Get in touch to discuss your project.',
+    ctaButton: 'Enquire',
+  },
+  sv: {
+    notFound: 'Artikeln hittades inte',
+    back: '← Tillbaka till artiklar',
+    englishOnly: 'Den här artikeln finns just nu bara på engelska.',
+    ctaText: 'Jag designar UX-drivna webbplatser för små företag och växande varumärken som behöver tydlighet, struktur och en webbplats som håller över tid. Har du ett projekt på gång? Hör gärna av dig.',
+    ctaHeading: 'Kontakta mig så pratar vi om ditt projekt.',
+    ctaButton: 'Kontakta mig',
+  },
 }
 
 function BlogPost() {
   const { slug } = useParams()
-  const post = getPost(slug)
+  const { lang, to, dateLocale } = useLocale()
+  const t = text[lang]
+  const post = getPost(slug, lang)
+
+  // Use the article's own call to action only when it's in the page language
+  const useOwnCta = post && post.contentLang === lang
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -25,8 +40,8 @@ function BlogPost() {
     return (
       <main style={styles.main}>
         <div style={styles.notFound}>
-          <h1>Post not found</h1>
-          <a href="/insights" style={styles.backLink}>← Back to Insights</a>
+          <h1>{t.notFound}</h1>
+          <a href={to('/insights')} style={styles.backLink}>{t.back}</a>
         </div>
       </main>
     )
@@ -36,14 +51,18 @@ function BlogPost() {
     <main style={styles.main}>
       <div style={styles.container}>
 
+        {post.contentLang !== lang && (
+          <p style={styles.languageNote}>{t.englishOnly}</p>
+        )}
+
         <div style={styles.tags}>
           {post.tags && post.tags.map(tag => (
             <span key={tag} style={styles.tag}>{tag}</span>
           ))}
         </div>
-        <h1 style={styles.title}>{post.title}</h1>
+        <h1 style={styles.title} lang={post.contentLang}>{post.title}</h1>
         <p style={styles.date}>
-          {new Date(`${post.date}T00:00:00`).toLocaleDateString('en-GB', {
+          {new Date(`${post.date}T00:00:00`).toLocaleDateString(dateLocale, {
             day: 'numeric',
             month: 'long',
             year: 'numeric',
@@ -58,18 +77,19 @@ function BlogPost() {
 
         <div
           className="post-content"
-          dangerouslySetInnerHTML={{ __html: marked(post.content) }}
+          lang={post.contentLang}
+          dangerouslySetInnerHTML={{ __html: marked(post.body) }}
         />
 
         <div style={styles.cta}>
           <p style={styles.ctaText}>
-            {post.ctaText || "I design UX-led websites for small businesses and growing brands that need clarity, structure and long-term performance. If you have a project in mind, I'd love to hear from you."}
+            {(useOwnCta && post.ctaText) || t.ctaText}
           </p>
-          <p style={styles.ctaHeading}>{post.ctaHeading || 'Get in touch to discuss your project.'}</p>
-          <a href="/enquire" style={styles.ctaButton}>Enquire</a>
+          <p style={styles.ctaHeading}>{(useOwnCta && post.ctaHeading) || t.ctaHeading}</p>
+          <a href={to('/enquire')} style={styles.ctaButton}>{t.ctaButton}</a>
         </div>
 
-        <a href="/insights" style={styles.backLink}>← Back to Insights</a>
+        <a href={to('/insights')} style={styles.backLink}>{t.back}</a>
 
       </div>
     </main>
@@ -88,6 +108,11 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '1.5rem',
+  },
+  languageNote: {
+    fontSize: '0.9rem',
+    color: '#888',
+    margin: 0,
   },
   tags: {
     display: 'flex',

@@ -4,7 +4,7 @@ date: "2026-05-11"
 tags: ["Small Business"]
 excerpt: "It's less useful to ask 'designer or developer?' and more useful to ask: what problem am I actually trying to solve?"
 coverImage: "/images/blog/designer-or-developer.jpg"
-ctaText: "Book a free consultiation to discuss how we can solve your problem."
+ctaText: "Book a free consultation to discuss how we can solve your problem."
 ---
 
 If you're looking to build or improve your online presence and you've started searching for help, you've probably run into both terms: web designer and web developer. They're often used interchangeably, but they're not the same thing — and hiring the wrong one for what you actually need can cost you time and money.

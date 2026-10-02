@@ -1,25 +1,30 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import frontMatter from 'front-matter'
+import { useLocale } from '../i18n'
+import { getPosts } from '../content'
 
-const postFiles = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getPosts() {
-    console.log('Post files:', postFiles)
-  console.log('Keys:', Object.keys(postFiles))
-  return Object.entries(postFiles).map(([filepath, content]) => {
-    const slug = filepath.replace('../posts/', '').replace('.md', '')
-    const { attributes } = frontMatter(content)
-return { slug, ...attributes }
-  }).sort((a, b) => new Date(`${b.date}T00:00:00`) - new Date(`${a.date}T00:00:00`))
+const text = {
+  en: {
+    title: 'Insights',
+    all: 'All',
+    englishOnly: '',
+  },
+  sv: {
+    title: 'Artiklar',
+    all: 'Alla',
+    englishOnly: 'Vissa artiklar finns just nu bara på engelska.',
+  },
 }
 
-function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, number }) {
+function PostCard({ post, number }) {
+  const navigate = useNavigate()
+  const { to, dateLocale } = useLocale()
+  const { slug, title, date, tags, excerpt, coverImage, contentLang } = post
+
   return (
     <div
-      key={slug}
       style={styles.postBlock}
-      onClick={() => navigate(`/insights/${slug}`)}
+      onClick={() => navigate(to(`/insights/${slug}`))}
       onMouseEnter={e => { e.currentTarget.style.opacity = '0.8' }}
       onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
     >
@@ -36,7 +41,7 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, numb
           <span style={styles.postNumber}>{String(number).padStart(2, '0')}</span>
           {date && (
             <span style={styles.postDate}>
-              {new Date(`${date}T00:00:00`).toLocaleDateString('en-GB', {
+              {new Date(`${date}T00:00:00`).toLocaleDateString(dateLocale, {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
@@ -44,8 +49,8 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, numb
             </span>
           )}
         </div>
-        <h2 style={styles.postTitle}>{title}</h2>
-        {excerpt && <p style={styles.excerpt}>{excerpt}</p>}
+        <h2 style={styles.postTitle} lang={contentLang}>{title}</h2>
+        {excerpt && <p style={styles.excerpt} lang={contentLang}>{excerpt}</p>}
         <div style={styles.postFooter}>
           {tags && tags.length > 0 && (
             <div style={styles.tags}>
@@ -64,9 +69,11 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage, navigate, numb
 const heroImage = '/images/insights-hero.jpg'
 
 function Blog() {
-  const posts = getPosts()
-  const navigate = useNavigate()
+  const { lang } = useLocale()
+  const t = text[lang]
+  const posts = getPosts(lang)
   const [activeTag, setActiveTag] = useState(null)
+  const showEnglishNote = lang === 'sv' && posts.some(p => p.contentLang === 'en')
 
   const allTags = [...new Set(posts.flatMap(p => p.tags || []))].sort()
   const filtered = activeTag ? posts.filter(p => p.tags && p.tags.includes(activeTag)) : posts
@@ -77,16 +84,20 @@ function Blog() {
       {/* Hero */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <h1 style={styles.heroTitle}>Insights</h1>
+        <h1 style={styles.heroTitle}>{t.title}</h1>
       </section>
 
+      {showEnglishNote && (
+        <p style={styles.languageNote} className="insights-language-note">{t.englishOnly}</p>
+      )}
+
       {/* Filter bar */}
-      <div style={styles.filterBar}>
+      <div style={styles.filterBar} className="insights-filter-bar">
         <button
           className={`filter-btn${activeTag === null ? ' active' : ''}`}
           onClick={() => setActiveTag(null)}
         >
-          All
+          {t.all}
         </button>
         {allTags.map(tag => (
           <button
@@ -101,7 +112,13 @@ function Blog() {
 
       {/* Three-column grid */}
       <section style={styles.grid} className="insights-grid">
-        {filtered.map((post) => PostCard({ ...post, navigate, number: posts.length - posts.findIndex(p => p.slug === post.slug) }))}
+        {filtered.map((post) => (
+          <PostCard
+            key={post.slug}
+            post={post}
+            number={posts.length - posts.findIndex(p => p.slug === post.slug)}
+          />
+        ))}
       </section>
 
       <style>{`
@@ -115,6 +132,9 @@ function Blog() {
           }
           .insights-filter-bar {
             padding: 1.25rem 1.5rem !important;
+          }
+          .insights-language-note {
+            padding: 1.25rem 1.5rem 0 !important;
           }
         }
       `}</style>
@@ -156,6 +176,14 @@ const styles = {
     margin: 0,
     color: "var(--color-text-light, #f5f5f0)",
     animation: "fadeUp 0.7s ease both",
+  },
+
+  // Language note (Swedish site only)
+  languageNote: {
+    fontSize: "0.9rem",
+    opacity: 0.6,
+    margin: 0,
+    padding: "1.5rem 6rem 0",
   },
 
   // Filter bar

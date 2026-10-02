@@ -1,28 +1,52 @@
+import { useLocale } from '../i18n'
+
+const text = {
+  en: {
+    award: 'Ecommerce Design Award Winning Work',
+    headlineStart: 'Helping small businesses',
+    headlineMiddle: 'find their ',
+    headlineAccent: 'best version',
+    tagline: 'Independent UX and web designer based in London, working with small businesses and growing brands who need clarity, structure and a website that actually works.',
+    primary: 'View my work',
+    secondary: 'Get in touch',
+  },
+  sv: {
+    award: 'Prisat i Ecommerce Design Awards',
+    headlineStart: 'Jag hjälper småföretag',
+    headlineMiddle: 'hitta sin ',
+    headlineAccent: 'bästa version',
+    tagline: 'Fristående UX- och webbdesigner i Göteborg. Jag jobbar med små företag och växande varumärken som behöver tydlighet, struktur och en webbplats som faktiskt fungerar.',
+    primary: 'Se mina projekt',
+    secondary: 'Hör av dig',
+  },
+}
+
 function Hero() {
+  const { lang, to } = useLocale()
+  const t = text[lang]
+
   return (
     <section style={styles.section} className="hero-section">
       <div style={styles.overlay} />
       <div style={styles.content}>
         <div style={styles.awardPill}>
           <span style={styles.awardIcon}>★</span>
-          <span>Ecommerce Design Award Winning Work</span>
+          <span>{t.award}</span>
         </div>
         <h1 style={styles.headline}>
-          Helping small businesses<br />
-          find their <span style={styles.accent}>best version</span>
+          {t.headlineStart}<br />
+          {t.headlineMiddle}<span style={styles.accent}>{t.headlineAccent}</span>
         </h1>
         <p style={styles.tagline}>
-          Independent UX and web designer based in London, working with
-          small businesses and growing brands who need clarity, structure
-          and a website that actually works.
+          {t.tagline}
         </p>
         <div style={styles.testimonial}>
-          <p style={styles.testimonialQuote}>"We are obsessed with Annie's work, it looks so fab"</p>
+          <p style={styles.testimonialQuote} lang="en">"We are obsessed with Annie's work, it looks so fab"</p>
           <p style={styles.testimonialAuthor}>— Ellie Proud, 4media group / Genaura</p>
         </div>
         <div style={styles.buttons}>
-          <a href="/work" style={styles.buttonPrimary}>View my work</a>
-          <a href="/enquire" style={styles.buttonSecondary}>Get in touch</a>
+          <a href={to('/work')} style={styles.buttonPrimary}>{t.primary}</a>
+          <a href={to('/enquire')} style={styles.buttonSecondary}>{t.secondary}</a>
         </div>
         <div style={styles.logos}>
           <img src="/images/squarespace-logo.png" alt="Squarespace" style={styles.logo} />

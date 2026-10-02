@@ -1,27 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import frontMatter from 'front-matter'
+import { useLocale } from '../i18n'
+import { getPosts } from '../content'
 
-const postFiles = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getLatestPosts() {
-  return Object.entries(postFiles)
-    .map(([filepath, content]) => {
-      const slug = filepath.replace('../posts/', '').replace('.md', '')
-      const { attributes } = frontMatter(content)
-      return { slug, ...attributes }
-    })
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3)
+const text = {
+  en: { heading: 'Latest Insights', viewAll: 'View all →' },
+  sv: { heading: 'Senaste artiklarna', viewAll: 'Visa alla →' },
 }
 
-function PostCard({ slug, title, date, tags, excerpt, coverImage }, i) {
+function PostCard({ post, number }) {
   const navigate = useNavigate()
+  const { to, dateLocale } = useLocale()
+  const { slug, title, date, tags, excerpt, coverImage, contentLang } = post
 
   return (
     <div
-      key={slug}
       style={styles.postBlock}
-      onClick={() => navigate(`/insights/${slug}`)}
+      onClick={() => navigate(to(`/insights/${slug}`))}
       onMouseEnter={e => { e.currentTarget.style.opacity = '0.8' }}
       onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
     >
@@ -35,10 +29,10 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage }, i) {
       )}
       <div style={styles.postBody}>
         <div style={styles.postMeta}>
-          <span style={styles.postNumber}>{String(i + 1).padStart(2, '0')}</span>
+          <span style={styles.postNumber}>{String(number).padStart(2, '0')}</span>
           {date && (
             <span style={styles.postDate}>
-              {new Date(date).toLocaleDateString('en-GB', {
+              {new Date(`${date}T00:00:00`).toLocaleDateString(dateLocale, {
                 day: 'numeric',
                 month: 'long',
                 year: 'numeric',
@@ -46,8 +40,8 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage }, i) {
             </span>
           )}
         </div>
-        <h3 style={styles.postTitle}>{title}</h3>
-        {excerpt && <p style={styles.excerpt}>{excerpt}</p>}
+        <h3 style={styles.postTitle} lang={contentLang}>{title}</h3>
+        {excerpt && <p style={styles.excerpt} lang={contentLang}>{excerpt}</p>}
         <div style={styles.postFooter}>
           {tags && tags.length > 0 && (
             <div style={styles.tags}>
@@ -64,16 +58,20 @@ function PostCard({ slug, title, date, tags, excerpt, coverImage }, i) {
 }
 
 function LatestInsights() {
-  const posts = getLatestPosts()
+  const { lang, to } = useLocale()
+  const t = text[lang]
+  const posts = getPosts(lang).slice(0, 3)
 
   return (
     <section style={styles.section}>
       <div style={styles.header}>
-        <h2 style={styles.heading}>Latest Insights</h2>
-        <a href="/insights" style={styles.viewAll}>View all →</a>
+        <h2 style={styles.heading}>{t.heading}</h2>
+        <a href={to('/insights')} style={styles.viewAll}>{t.viewAll}</a>
       </div>
       <div style={styles.grid} className="insights-grid">
-        {posts.map((post, i) => PostCard(post, i))}
+        {posts.map((post, i) => (
+          <PostCard key={post.slug} post={post} number={i + 1} />
+        ))}
       </div>
       <style>{`
         @media (max-width: 768px) {

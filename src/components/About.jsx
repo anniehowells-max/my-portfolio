@@ -1,25 +1,39 @@
+import { useLocale } from '../i18n'
+
+const text = {
+  en: {
+    heading: 'About me',
+    intro: 'I’m Annie — a freelance web, UX/UI and brand designer based in London and Sweden. I create thoughtful digital experiences and identities that help brands connect with the people who matter.',
+    personal: "When I'm not designing, you'll probably find me exploring London, hunting for yarn and cacti, or tinkering with side projects like, well, building this site from scratch.",
+    skills: ['UX Design', 'UI Design', 'User Research', 'Prototyping', 'Figma', 'Usability Testing'],
+    button: 'More about me',
+  },
+  sv: {
+    heading: 'Om mig',
+    intro: 'Jag heter Annie och är frilansande webb-, UX/UI- och varumärkesdesigner i Göteborg och London. Jag skapar genomtänkta digitala upplevelser och identiteter som hjälper varumärken att nå de rätt kunder.',
+    personal: 'När jag inte designar hittar du mig oftast i en garnbutik eller plantskola, eller pysslandes med sidoprojekt, t.ex. att bygga den här sajten från grunden.',
+    skills: ['UX-design', 'UI-design', 'Användarundersökningar', 'Prototyper', 'Figma', 'Användbarhetstester'],
+    button: 'Mer om mig',
+  },
+}
+
 function About() {
+  const { lang, to } = useLocale()
+  const t = text[lang]
+
   return (
     <section id="about" style={styles.section}>
       <div className="about-inner">
         <div style={styles.textBlock}>
-          <h2 style={styles.heading}>About me</h2>
-          <p style={styles.body}>
-            I’m Annie — a freelance web, UX/UI and brand designer based in London. 
-            I create thoughtful digital experiences and identities that help brands 
-            connect with the people who matter.
-          </p>
-          <p style={styles.body}>
-            When I'm not designing, you'll probably find me exploring London,
-            hunting for yarn and cacti, or tinkering with side projects like,
-            well, building this site from scratch.
-          </p>
+          <h2 style={styles.heading}>{t.heading}</h2>
+          <p style={styles.body}>{t.intro}</p>
+          <p style={styles.body}>{t.personal}</p>
           <div style={styles.skills}>
-            {skills.map(skill => (
+            {t.skills.map(skill => (
               <span key={skill} style={styles.skill}>{skill}</span>
             ))}
           </div>
-          <a href="/about" style={styles.button}>More about me</a>
+          <a href={to('/about')} style={styles.button}>{t.button}</a>
         </div>
         <div className="about-image" style={{
           ...styles.imagePlaceholder,
@@ -31,15 +45,6 @@ function About() {
     </section>
   )
 }
-
-const skills = [
-  'UX Design',
-  'UI Design',
-  'User Research',
-  'Prototyping',
-  'Figma',
-  'Usability Testing',
-]
 
 const styles = {
   section: {

@@ -1,22 +1,28 @@
-import frontMatter from 'front-matter'
 import { useNavigate } from 'react-router-dom'
-
-const projectFiles = import.meta.glob('../projects/*.md', { query: '?raw', import: 'default', eager: true })
-
-function getProjects() {
-  return Object.entries(projectFiles)
-    .map(([filepath, content]) => {
-      const slug = filepath.replace('../projects/', '').replace('.md', '')
-      const { attributes } = frontMatter(content)
-      return { slug, ...attributes }
-    })
-    .sort((a, b) => (a.order || 0) - (b.order || 0))
-}
+import { useLocale } from '../i18n'
+import { getProjects } from '../content'
 
 const heroImage = '/images/work-hero.jpg bottom'
 
+const text = {
+  en: {
+    title: 'Work',
+    taglineStart: 'Design that',
+    taglineEnd: 'makes an impact.',
+    award: 'Ecommerce Design Award Winner',
+  },
+  sv: {
+    title: 'Projekt',
+    taglineStart: 'Design som',
+    taglineEnd: 'gör skillnad.',
+    award: 'Vinnare i Ecommerce Design Awards',
+  },
+}
+
 function ProjectCollection() {
-  const projects = getProjects()
+  const { lang, to } = useLocale()
+  const t = text[lang]
+  const projects = getProjects(lang)
   const navigate = useNavigate()
 
   return (
@@ -26,8 +32,8 @@ function ProjectCollection() {
       <section style={styles.hero} className="work-hero">
         <div style={styles.heroOverlay} />
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>Work</h1>
-          <h2 style={styles.heroSubtitle} className="work-hero-subtitle">Design that makes an impact.</h2>
+          <h1 style={styles.heroTitle}>{t.title}</h1>
+          <h2 style={styles.heroSubtitle} className="work-hero-subtitle">{t.taglineStart} {t.taglineEnd}</h2>
         </div>
       </section>
 
@@ -37,7 +43,7 @@ function ProjectCollection() {
         {/* Left sticky column */}
         <div style={styles.leftCol} className="work-left-col">
           <h2 style={styles.leftHeading}>
-            Design that<br />makes an impact.
+            {t.taglineStart}<br />{t.taglineEnd}
           </h2>
         </div>
 
@@ -47,7 +53,7 @@ function ProjectCollection() {
             <div
               key={project.slug}
               style={styles.projectBlock}
-              onClick={() => navigate(`/${project.slug}`)}
+              onClick={() => navigate(to(`/${project.slug}`))}
               onMouseEnter={e => { e.currentTarget.style.opacity = '0.8' }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
             >
@@ -63,7 +69,7 @@ function ProjectCollection() {
                   {project.slug === 'orserio' && (
                     <div style={styles.awardBadge}>
                       <span>★</span>
-                      <span>Ecommerce Design Award Winner</span>
+                      <span>{t.award}</span>
                     </div>
                   )}
                 </div>

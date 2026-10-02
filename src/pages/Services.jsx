@@ -1,86 +1,180 @@
 import { useState } from "react"
 import Contact from "../components/Contact"
+import { useLocale } from "../i18n"
 
-const services = [
-  {
-    number: "01",
-    title: "Web Design & Build",
-    description:
-      "Design and build of responsive, user-focused websites that are easy to navigate, easy to manage, and designed to convert. From structure and layout to final launch.",
+const text = {
+  en: {
+    title: "Services",
+    eyebrow: "What I offer",
+    headingStart: "Strategic design,",
+    headingEnd: "built to perform.",
+    intro: "From full website builds to brand identities and UX improvements — every service is focused on clarity, usability, and results that last.",
+    clientLabel: "Who I work with",
+    cta: "Enquire Now",
+    faqHeading: "FAQ's",
+    services: [
+      {
+        title: "Web Design & Build",
+        description:
+          "Design and build of responsive, user-focused websites that are easy to navigate, easy to manage, and designed to convert. From structure and layout to final launch.",
+      },
+      {
+        title: "Website Refresh",
+        description:
+          "Perfect for businesses whose website looks dated or no longer reflects where they are today. Updates the design, layout and content to improve clarity, usability and visual impact — without the cost of a full rebuild.",
+      },
+      {
+        title: "Brand Identity Design",
+        description:
+          "Complete visual identities that define how your brand looks, feels, and communicates. Including colour, typography, and design systems that work consistently across digital and print.",
+      },
+      {
+        title: "UX/UI Services",
+        description:
+          "User-centred design focused on usability, clarity, and flow. From UX audits and wireframes to interface design for websites and digital products.",
+      },
+      {
+        title: "Graphic Design",
+        description:
+          "Design support for both digital and print — from marketing assets to presentations and editorial layouts. Clean, considered design that aligns with your brand.",
+      },
+      {
+        title: "Social Media Post Design",
+        description:
+          "Custom-designed social media posts and templates that feel cohesive, on-brand, and easy to reuse — helping you show up consistently online.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can you redesign my existing website?",
+        answer:
+          "Yes. I regularly redesign websites to improve user experience, increase clarity and conversions, modernise branding, and improve structure and usability. If your current site feels outdated, unclear, or underperforming, a strategic redesign can significantly improve results.",
+      },
+      {
+        question: "What kind of design work do you specialise in?",
+        answer:
+          "I focus on web design, UX/UI, brand identity, and digital experiences that help businesses communicate clearly and connect with their audience.",
+      },
+      {
+        question: "Do you work with startups, small businesses, or larger companies?",
+        answer:
+          "I work with startups, growing businesses, and established brands looking to improve their digital presence — from founders launching a new brand to companies wanting better UX and clearer messaging.",
+      },
+      {
+        question: "How long does a website design project take?",
+        answer:
+          "Small website: 3–5 weeks. Full website redesign: 6–10 weeks. Branding + website: 8–12+ weeks. Each project begins with a clear roadmap so you know exactly what to expect.",
+      },
+      {
+        question: "What is your website design process?",
+        answer:
+          "My process is structured and collaborative: Discovery & Strategy → UX Planning → Visual Design → Build & Testing → Launch & Support. This ensures your website isn't just designed — it's strategically built.",
+      },
+      {
+        question: "Do you offer UX audits?",
+        answer:
+          "Yes. I provide UX audits for websites and digital platforms, identifying usability issues, structural weaknesses, and conversion blockers. You'll receive clear, actionable recommendations to improve performance and user experience.",
+      },
+      {
+        question: "Do you only work with clients in London?",
+        answer:
+          "No — although I'm based in London, I work with clients across the UK and internationally. Projects are managed remotely with structured communication and milestone check-ins.",
+      },
+    ],
   },
-  {
-    number: "02",
-    title: "Website Refresh",
-    description:
-      "Perfect for businesses whose website looks dated or no longer reflects where they are today. Updates the design, layout and content to improve clarity, usability and visual impact — without the cost of a full rebuild.",
+  sv: {
+    title: "Tjänster",
+    eyebrow: "Det här erbjuder jag",
+    headingStart: "Strategisk design",
+    headingEnd: "som gör skillnad.",
+    intro: "Från kompletta webbplatser till visuella identiteter och UX-förbättringar. Varje tjänst handlar om tydlighet, användbarhet och resultat som håller över tid.",
+    clientLabel: "Vem jag jobbar med",
+    cta: "Kontakta mig",
+    faqHeading: "Vanliga frågor",
+    services: [
+      {
+        title: "Webbdesign och utveckling",
+        description:
+          "Design och utveckling av responsiva, användarfokuserade webbplatser som är lätta att navigera, lätta att uppdatera och byggda för att konvertera. Från struktur och layout till lansering.",
+      },
+      {
+        title: "Uppfräschning av webbplats",
+        description:
+          "För företag vars webbplats känns daterad eller inte längre speglar var de står idag. Jag uppdaterar design, layout och innehåll så att sidan blir tydligare, enklare att använda och mer slagkraftig, utan kostnaden för en helt ny webbplats.",
+      },
+      {
+        title: "Visuell identitet",
+        description:
+          "Kompletta visuella identiteter som bestämmer hur ditt varumärke ser ut, känns och kommunicerar. Färger, typografi och designsystem som fungerar konsekvent både digitalt och i tryck.",
+      },
+      {
+        title: "UX/UI-tjänster",
+        description:
+          "Användarcentrerad design med fokus på användbarhet, tydlighet och flöde. Från UX-granskningar och wireframes till gränssnittsdesign för webbplatser och digitala produkter.",
+      },
+      {
+        title: "Grafisk design",
+        description:
+          "Designstöd för både digitalt och tryck, från marknadsföringsmaterial till presentationer och redaktionella layouter. Ren, genomtänkt design som går i linje med ditt varumärke.",
+      },
+      {
+        title: "Inlägg för sociala medier",
+        description:
+          "Skräddarsydda inlägg och mallar för sociala medier som känns enhetliga, följer varumärket och är lätta att återanvända, så att du syns konsekvent online.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Kan du göra om min nuvarande webbplats?",
+        answer:
+          "Ja. Jag gör ofta om webbplatser för att förbättra användarupplevelsen, göra budskapet tydligare, öka konverteringen, modernisera varumärket och förbättra struktur och användbarhet. Om din webbplats känns föråldrad, otydlig eller inte presterar som den borde kan en genomtänkt omdesign göra stor skillnad.",
+      },
+      {
+        question: "Vilken typ av designarbete är du specialiserad på?",
+        answer:
+          "Webbdesign, UX/UI, visuell identitet och digitala upplevelser som hjälper företag att kommunicera tydligt och nå sin målgrupp.",
+      },
+      {
+        question: "Jobbar du med startups, småföretag eller större bolag?",
+        answer:
+          "Jag jobbar med startups, växande företag och etablerade varumärken som vill stärka sin digitala närvaro, från grundare som lanserar ett nytt varumärke till bolag som vill ha bättre UX och tydligare budskap.",
+      },
+      {
+        question: "Hur lång tid tar ett webbprojekt?",
+        answer:
+          "Mindre webbplats: 3–5 veckor. Omdesign av en hel webbplats: 6–10 veckor. Varumärke och webbplats: 8–12 veckor eller mer. Varje projekt börjar med en tydlig plan så att du vet exakt vad du kan förvänta dig.",
+      },
+      {
+        question: "Hur ser din process ut?",
+        answer:
+          "Min process är strukturerad och bygger på samarbete: research och strategi → UX-planering → visuell design → utveckling och test → lansering och support. Det gör att din webbplats inte bara blir snygg, utan byggd med en tydlig strategi.",
+      },
+      {
+        question: "Gör du UX-granskningar?",
+        answer:
+          "Ja. Jag granskar webbplatser och digitala plattformar och hittar problem med användbarhet, svagheter i strukturen och hinder för konvertering. Du får tydliga och konkreta rekommendationer för att förbättra både resultat och användarupplevelse.",
+      },
+      {
+        question: "Kan vi jobba på svenska?",
+        answer:
+          "Ja. Jag jobbar på både svenska och engelska, så vi kör projektet på det språk som passar dig och ditt team bäst.",
+      },
+      {
+        question: "Jobbar du bara med kunder i Göteborg?",
+        answer:
+          "Nej. Jag är baserad i Göteborg men jobbar med kunder i hela Sverige, i Storbritannien och internationellt. Projekten sköts på distans med tydlig kommunikation och avstämningar vid varje delmål. Finns du i Göteborgsområdet ses vi gärna på plats.",
+      },
+    ],
   },
-  {
-    number: "03",
-    title: "Brand Identity Design",
-    description:
-      "Complete visual identities that define how your brand looks, feels, and communicates. Including colour, typography, and design systems that work consistently across digital and print.",
-  },
-  {
-    number: "04",
-    title: "UX/UI Services",
-    description:
-      "User-centred design focused on usability, clarity, and flow. From UX audits and wireframes to interface design for websites and digital products.",
-  },
-  {
-    number: "05",
-    title: "Graphic Design",
-    description:
-      "Design support for both digital and print — from marketing assets to presentations and editorial layouts. Clean, considered design that aligns with your brand.",
-  },
-  {
-    number: "06",
-    title: "Social Media Post Design",
-    description:
-      "Custom-designed social media posts and templates that feel cohesive, on-brand, and easy to reuse — helping you show up consistently online.",
-  },
-]
-
-const faqs = [
-  {
-    question: "Can you redesign my existing website?",
-    answer:
-      "Yes. I regularly redesign websites to improve user experience, increase clarity and conversions, modernise branding, and improve structure and usability. If your current site feels outdated, unclear, or underperforming, a strategic redesign can significantly improve results.",
-  },
-  {
-    question: "What kind of design work do you specialise in?",
-    answer:
-      "I focus on web design, UX/UI, brand identity, and digital experiences that help businesses communicate clearly and connect with their audience.",
-  },
-  {
-    question: "Do you work with startups, small businesses, or larger companies?",
-    answer:
-      "I work with startups, growing businesses, and established brands looking to improve their digital presence — from founders launching a new brand to companies wanting better UX and clearer messaging.",
-  },
-  {
-    question: "How long does a website design project take?",
-    answer:
-      "Small website: 3–5 weeks. Full website redesign: 6–10 weeks. Branding + website: 8–12+ weeks. Each project begins with a clear roadmap so you know exactly what to expect.",
-  },
-  {
-    question: "What is your website design process?",
-    answer:
-      "My process is structured and collaborative: Discovery & Strategy → UX Planning → Visual Design → Build & Testing → Launch & Support. This ensures your website isn't just designed — it's strategically built.",
-  },
-  {
-    question: "Do you offer UX audits?",
-    answer:
-      "Yes. I provide UX audits for websites and digital platforms, identifying usability issues, structural weaknesses, and conversion blockers. You'll receive clear, actionable recommendations to improve performance and user experience.",
-  },
-  {
-    question: "Do you only work with clients in London?",
-    answer:
-      "No — although I'm based in London, I work with clients across the UK and internationally. Projects are managed remotely with structured communication and milestone check-ins.",
-  },
-]
+}
 
 const heroImage = '/images/services-hero.jpg bottom'
 
 export default function Services() {
+  const { lang, to } = useLocale()
+  const t = text[lang]
+  const services = t.services
+  const faqs = t.faqs
   const [openService, setOpenService] = useState(null)
   const [openFaq, setOpenFaq] = useState(null)
 
@@ -90,29 +184,29 @@ export default function Services() {
       {/* Hero */}
       <section style={styles.hero}>
         <div style={styles.heroOverlay} />
-        <h1 style={styles.heroTitle}>Services</h1>
+        <h1 style={styles.heroTitle}>{t.title}</h1>
       </section>
 
       {/* Two-column services section */}
       <section style={styles.twoCol} className="services-two-col">
         {/* Left: sticky "What I Offer" */}
         <div style={styles.leftCol} className="services-left-col">
-          <p style={styles.eyebrow}>What I offer</p>
+          <p style={styles.eyebrow}>{t.eyebrow}</p>
           <h2 style={styles.leftHeading}>
-            Strategic design,<br />built to perform.
+            {t.headingStart}<br />{t.headingEnd}
           </h2>
           <p style={styles.leftBody}>
-            From full website builds to brand identities and UX improvements — every service is focused on clarity, usability, and results that last.
+            {t.intro}
           </p>
           <div style={styles.clientTypes}>
-            <p style={styles.clientLabel}>Who I work with</p>
+            <p style={styles.clientLabel}>{t.clientLabel}</p>
             <div style={styles.clientTags}>
               <span style={styles.clientTag}>D2C</span>
               <span style={styles.clientTag}>B2B</span>
               <span style={styles.clientTag}>B2C</span>
             </div>
           </div>
-          <a href="/enquire" style={styles.leftCta}>Enquire Now</a>
+          <a href={to('/enquire')} style={styles.leftCta}>{t.cta}</a>
         </div>
 
         {/* Right: accordions */}
@@ -123,7 +217,7 @@ export default function Services() {
                 style={styles.accordionHeader}
                 onClick={() => setOpenService(openService === i ? null : i)}
               >
-                <span style={styles.accordionNumber}>{s.number}</span>
+                <span style={styles.accordionNumber}>{String(i + 1).padStart(2, '0')}</span>
                 <span style={styles.accordionTitle}>{s.title}</span>
                 <span
                   style={{
@@ -144,14 +238,14 @@ export default function Services() {
 
       {/* CTA Band */}
       <section style={styles.ctaBand}>
-        <p style={styles.ctaQuote}>"Beautiful, slick, calm and clear, visually stunning."</p>
+        <p style={styles.ctaQuote} lang="en">"Beautiful, slick, calm and clear, visually stunning."</p>
         <p style={styles.ctaAuthor}>— Betsy Limpenny, The Interiors Edit</p>
-        <a href="/enquire" style={styles.ctaBtn}>Enquire Now</a>
+        <a href={to('/enquire')} style={styles.ctaBtn}>{t.cta}</a>
       </section>
 
       {/* FAQ */}
       <section style={styles.faqSection}>
-        <h2 style={styles.faqHeading}>FAQ's</h2>
+        <h2 style={styles.faqHeading}>{t.faqHeading}</h2>
         <div style={styles.faqList}>
           {faqs.map((faq, i) => (
             <div key={i} style={styles.faqItem}>
