@@ -2,6 +2,7 @@
 title: "What Is a UX Audit, and Does Your Website Need One?"
 date: "2026-10-08"
 excerpt: "Your website looks fine, but enquiries are quiet. Before you spend money on a redesign, a UX audit can tell you what is actually getting in the way, and what to fix first."
+coverImage: "/images/blog/ux-audit.jpg"
 ctaText: "Tell me about your website"
 ---
 
