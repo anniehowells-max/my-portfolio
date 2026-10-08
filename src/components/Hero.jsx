@@ -31,7 +31,7 @@ const text = {
     headlineStart: 'Jag hjälper småföretag',
     headlineMiddle: 'hitta sin ',
     headlineAccent: 'bästa version',
-    tagline: 'Fristående UX- och webbdesigner i Göteborg. Jag jobbar med små företag och växande varumärken som behöver tydlighet, struktur och en webbplats som faktiskt fungerar.',
+    tagline: 'Frilansande webbdesigner och UX-konsult i Göteborg. Jag jobbar med små företag och växande varumärken som behöver tydlighet, struktur och en webbplats som faktiskt fungerar.',
     primary: 'Se mina projekt',
     secondary: 'Hör av dig',
     project: 'Projekt',

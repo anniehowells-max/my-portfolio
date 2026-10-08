@@ -9,11 +9,11 @@ export const landingPages = [
     slug: 'webbyra-goteborg',
     footerLabel: 'Webbyrå i Göteborg',
     title: 'Webbyrå i Göteborg? Ett personligt alternativ | Annie Howells Design',
-    description: 'Letar du efter en webbyrå i Göteborg? Jag är fristående webbdesigner och utvecklare. Du får strategi, design och utveckling, men jobbar direkt med den som gör jobbet.',
+    description: 'Letar du efter en webbyrå i Göteborg? Jag är fristående webbdesigner, utvecklare och konsult. Du får strategi, design och utveckling, men jobbar direkt med den som gör jobbet.',
     heroImage: '/images/work-hero.jpg',
     eyebrow: 'Webbdesign och utveckling i Göteborg',
     heading: 'Letar du efter en webbyrå i Göteborg?',
-    intro: 'Jag är fristående webb- och varumärkesdesigner i Göteborg. Du får det en byrå erbjuder, strategi, design och utveckling, men jobbar direkt med den som gör jobbet. Inga mellanhänder, korta beslutsvägar.',
+    intro: 'Jag är fristående webb- och varumärkesdesigner och konsult i Göteborg. Du får det en byrå erbjuder, strategi, design och utveckling, men jobbar direkt med den som gör jobbet. Inga mellanhänder, korta beslutsvägar.',
     primaryCta: 'Berätta om ditt projekt',
     secondaryCta: { label: 'Se mina projekt', path: '/work' },
     reasonsHeading: 'Varför en fristående designer?',
@@ -47,7 +47,7 @@ export const landingPages = [
     faqs: [
       {
         question: 'Vad är skillnaden mellan en webbyrå och en frilansare?',
-        answer: 'En webbyrå har ett team med flera roller, vilket passar stora projekt med många inblandade. Som frilansare gör jag strategi, design och utveckling själv. För de flesta småföretag och växande varumärken betyder det kortare beslutsvägar, en tydlig kontaktperson och att du betalar för arbetet snarare än för flera led.',
+        answer: 'En webbyrå har ett team med flera roller, vilket passar stora projekt med många inblandade. Som frilansande konsult gör jag strategi, design och utveckling själv. För de flesta småföretag och växande varumärken betyder det kortare beslutsvägar, en tydlig kontaktperson och att du betalar för arbetet snarare än för flera led.',
       },
       {
         question: 'Kan du både designa och bygga hemsidan?',

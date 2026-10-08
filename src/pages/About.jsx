@@ -18,7 +18,7 @@ const text = {
   sv: {
     title: 'Om mig',
     meetHeading: 'Det här är jag',
-    meet: 'Jag designar genomtänkta varumärken och digitala upplevelser som hjälper människor att förstå vilka ni är och varför ni spelar roll. Jag jobbar med D2C-, B2B- och B2C-företag och fokuserar på UX-drivna webbplatser och visuella identiteter. Tydlighet, användbarhet och berättande står i centrum, så att varumärket känns genomtänkt, tryggt och mänskligt.',
+    meet: 'Jag är frilansande designer och konsult och skapar genomtänkta varumärken och digitala upplevelser som hjälper människor att förstå vilka ni är och varför ni spelar roll. Jag jobbar med D2C-, B2B- och B2C-företag och fokuserar på UX-drivna webbplatser och visuella identiteter. Tydlighet, användbarhet och berättande står i centrum, så att varumärket känns genomtänkt, tryggt och mänskligt.',
     workHeading: 'Så jobbar jag',
     work1: 'Varje projekt börjar med att jag lyssnar och tar reda på era mål, er målgrupp och vad som redan fungerar. Sedan använder jag UX-tänk och strategisk design för att strukturera innehållet, definiera flöden och skapa en visuell form som utgår från verkliga behov.',
     work2: 'Jag är van vid wireframes, gränssnitt i Figma och responsiva layouter som känns naturliga på alla enheter. Min process är flexibel, praktisk och anpassad efter varje projekt, så att resultatet blir både snyggt och välfungerande.',

@@ -87,7 +87,7 @@ const text = {
     eyebrow: "Det här erbjuder jag",
     headingStart: "Strategisk design",
     headingEnd: "som gör skillnad.",
-    intro: "Från kompletta webbplatser till visuella identiteter och UX-förbättringar. Varje tjänst handlar om tydlighet, användbarhet och resultat som håller över tid.",
+    intro: "Från kompletta webbplatser till visuella identiteter och UX-förbättringar, som projekt eller som konsult i ditt team. Varje tjänst handlar om tydlighet, användbarhet och resultat som håller över tid.",
     clientLabel: "Vem jag jobbar med",
     cta: "Kontakta mig",
     faqHeading: "Vanliga frågor",
@@ -153,6 +153,11 @@ const text = {
         question: "Gör du UX-granskningar?",
         answer:
           "Ja. Jag granskar webbplatser och digitala plattformar och hittar problem med användbarhet, svagheter i strukturen och hinder för konvertering. Du får tydliga och konkreta rekommendationer för att förbättra både resultat och användarupplevelse.",
+      },
+      {
+        question: "Kan jag anlita dig som konsult?",
+        answer:
+          "Ja. Förutom avgränsade projekt tar jag uppdrag som konsult inom webbdesign, UX och varumärke, till exempel när ditt team behöver förstärkning under en period eller hjälp med en UX-granskning. Vi kommer överens om omfattning och upplägg innan vi sätter igång.",
       },
       {
         question: "Kan vi jobba på svenska?",

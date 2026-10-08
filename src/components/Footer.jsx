@@ -21,6 +21,7 @@ const text = {
     tagline: 'Annie Howells Design, en oberoende designstudio.',
     localHeading: 'Webbdesign i Göteborg',
     localArticle: 'Så väljer du webbdesigner i Göteborg',
+    consultArticle: 'Webbdesignkonsult för småföretag',
   },
 }
 
@@ -45,6 +46,9 @@ function Footer() {
               ))}
               <a href="/sv/insights/webbdesigner-goteborg" style={styles.localLink} className="footer-nav-link">
                 {t.localArticle}
+              </a>
+              <a href="/sv/insights/webbdesign-konsult-goteborg" style={styles.localLink} className="footer-nav-link">
+                {t.consultArticle}
               </a>
             </nav>
           )}

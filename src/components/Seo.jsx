@@ -21,16 +21,16 @@ const pageMeta = {
   },
   sv: {
     '/': {
-      title: `Webbdesigner och varumärkesdesigner i Göteborg | ${SITE_NAME}`,
-      description: 'Annie Howells är webb-, UX- och varumärkesdesigner i Göteborg. Hemsidor, visuell identitet och UX-granskningar för småföretag och växande varumärken.',
+      title: `Webbdesigner och UX-konsult i Göteborg | ${SITE_NAME}`,
+      description: 'Annie Howells är webbdesigner och konsult inom UX och varumärke i Göteborg. Hemsidor, visuell identitet och UX-granskningar för småföretag och växande varumärken.',
     },
     '/work': { title: `Projekt | ${SITE_NAME}`, description: 'Utvalda projekt inom webbdesign, UX och visuell identitet av Annie Howells, webbdesigner i Göteborg.' },
     '/services': {
       title: `Webbdesign, visuell identitet och UX i Göteborg | ${SITE_NAME}`,
-      description: 'Webbdesign och utveckling, uppfräschning av hemsidor, visuell identitet, UX/UI och grafisk design för företag i Göteborg och resten av Sverige.',
+      description: 'Webbdesign och utveckling, UX-konsult, uppfräschning av hemsidor, visuell identitet och grafisk design för företag i Göteborg och resten av Sverige.',
     },
     '/insights': { title: `Artiklar om webbdesign och UX | ${SITE_NAME}`, description: 'Artiklar om webbdesign, UX och varumärke för småföretag och växande varumärken.' },
-    '/about': { title: `Om Annie Howells, webbdesigner i Göteborg | ${SITE_NAME}`, description: 'Annie Howells är frilansande webb-, UX/UI- och varumärkesdesigner baserad i Göteborg.' },
+    '/about': { title: `Om Annie Howells, webbdesigner och konsult i Göteborg | ${SITE_NAME}`, description: 'Annie Howells är frilansande webb-, UX/UI- och varumärkesdesigner och konsult baserad i Göteborg.' },
     '/enquire': { title: `Kontakt | ${SITE_NAME}`, description: 'Hör av dig om du vill prata om din hemsida eller ditt varumärke.' },
   },
 }

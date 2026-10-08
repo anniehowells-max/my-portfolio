@@ -10,7 +10,7 @@ const text = {
   },
   sv: {
     heading: 'Om mig',
-    intro: 'Jag heter Annie och är frilansande webb-, UX/UI- och varumärkesdesigner i Göteborg och London. Jag skapar genomtänkta digitala upplevelser och identiteter som hjälper varumärken att nå de rätt kunder.',
+    intro: 'Jag heter Annie och är frilansande webb-, UX/UI- och varumärkesdesigner och konsult i Göteborg och London. Jag skapar genomtänkta digitala upplevelser och identiteter som hjälper varumärken att nå rätt kunder.',
     personal: 'När jag inte designar hittar du mig oftast i en garnbutik eller plantskola, eller pysslandes med sidoprojekt, t.ex. att bygga den här sajten från grunden.',
     skills: ['UX-design', 'UI-design', 'Användarundersökningar', 'Prototyper', 'Figma', 'Användbarhetstester'],
     button: 'Mer om mig',
