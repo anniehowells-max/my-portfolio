@@ -39,12 +39,3 @@ Live | Available on the App Store
 /images/projects/larder/larder-1.png
 /images/projects/larder/larder-2.png
 ::
-
-::image-full
-/images/projects/larder/larder-3.png
-::
-
-::image-grid
-/images/projects/larder/larder-4.png
-/images/projects/larder/larder-5.png
-::
