@@ -7,7 +7,7 @@ import { useLocale } from '../i18n'
 // slug links the small caption to the case study; leave it out to hide the caption.
 const slides = [
   { image: '/images/hero-slides/genaura.jpg', position: '65% center', title: 'Genaura', slug: 'genaura' },
-  { image: '/images/hero-slides/orserio.jpg', position: 'center', title: 'Orserio', slug: 'orserio' },
+  { image: '/images/hero-slides/orserio.png', position: 'center', title: 'Orserio', slug: 'orserio' },
   { image: '/images/hero-slides/wolfie.jpg', position: 'center', title: 'Wolfie', slug: 'wolfie' },
   { image: '/images/hero-slides/oetker-collection.jpg', position: 'center', title: 'Oetker Collection Boutique', slug: 'oetker-collection-boutique' },
 ]
