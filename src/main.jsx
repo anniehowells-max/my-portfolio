@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { inject } from '@vercel/analytics'
+import { BrowserRouter, Routes, Route, useLocation, matchRoutes } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { injectSpeedInsights } from '@vercel/speed-insights'
 import './index.css'
 import App from './App'
@@ -16,7 +16,6 @@ import AboutPage from './pages/About'
 import LandingPage from './pages/LandingPage'
 import { landingPages } from './landingPages'
 
-inject()
 injectSpeedInsights()
 
 const pages = [
@@ -43,6 +42,32 @@ const routes = [
   })),
 ]
 
+// Skip analytics on your own devices.
+// Run localStorage.setItem('va-disable', 'true') in the browser console once per device.
+function skipOwnVisits(event) {
+  try {
+    if (localStorage.getItem('va-disable')) return null
+  } catch {
+    // localStorage unavailable, count the visit
+  }
+  return event
+}
+
+// Sends the matched route pattern (e.g. /insights/:slug) so the Routes tab fills in
+function RouteAnalytics() {
+  const location = useLocation()
+  const matches = matchRoutes(routes, location)
+  const route = matches?.[matches.length - 1]?.route.path ?? location.pathname
+
+  return (
+    <Analytics
+      route={route}
+      path={location.pathname}
+      beforeSend={skipOwnVisits}
+    />
+  )
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
@@ -51,6 +76,7 @@ createRoot(document.getElementById('root')).render(
           <Route key={path} path={path} element={<Layout>{element}</Layout>} />
         ))}
       </Routes>
+      <RouteAnalytics />
     </BrowserRouter>
   </StrictMode>
 )
